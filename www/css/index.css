@@ -19,14 +19,7 @@ body {
 	color: white;
 }
 
-button {
-  
-  -moz-border-radius: 15px;
-  -webkit-border-radius: 15px;
-  border: 1px solid #009900;
-  padding: 5px;
-  
-}
+
 
 /* Portrait layout (default) */
 .app {
