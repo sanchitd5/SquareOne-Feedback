@@ -15,28 +15,18 @@
 	height: 35px;
 	width: 270px;
 }
+button#main_login
+{
+border: 2px solid grey;
+}
 button#main_login:hover 
 {
     background-color: #A9A9A9; 
     color: white;
-}	
-button#main_login
-	{
-		-moz-border-radius: 15px;
-		-webkit-border-radius: 8px;
-		border: 2px solid grey;
-		padding: 5px;
-		height: 35px;
-		width: 270px;
-	}
+}
 button#fb_login
 {
-		-moz-border-radius: 15px;
-		-webkit-border-radius: 8px;
 		border: 0px solid #3b5998;
-		padding: 5px;
-		height: 35px;
-		width: 270px;
 		color: white;
 		background-image:url(../img/fb-button.png);
 }
@@ -47,14 +37,17 @@ button#fb_login:hover
 }
 button#g_login
 {
+	border: 0px solid #d34836;
+	color: grey;
+	background-image:url(../img/google-button.png);
+}
+button.login_button
+{
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 8px;
-	border: 0px solid #d34836;
 	padding: 5px;
 	height: 35px;
 	width: 270px;
-	color: grey;
-	background-image:url(../img/google-button.png);
 }
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
