@@ -3,14 +3,58 @@
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
 
-input
+
+.login_input
+	{
+		-moz-border-radius: 15px;
+		border-radius: 8px;
+		border:2px solid grey;
+		padding:5px;
+		font-family:Helvetica;
+		font-size:12px;
+		height: 35px;
+		width: 270px;
+	}
+.login_button:hover 
+{
+    background-color: #A9A9A9; 
+    color: white;
+}	
+.login_button
+	{
+		-moz-border-radius: 15px;
+		-webkit-border-radius: 8px;
+		border: 2px solid grey;
+		padding: 5px;
+		height: 35px;
+		width: 270px;
+	}
+.fb_button
+{
+		-moz-border-radius: 15px;
+		-webkit-border-radius: 8px;
+		border: 0px solid #3b5998;
+		padding: 5px;
+		height: 35px;
+		width: 270px;
+		color: white;
+		background-image:url(../img/fb-button.png);
+}
+.fb_button:hover
+{
+	background-image:url(../img/fb-button_hover.png);
+	color: white;
+	}
+.g_button
 {
 	-moz-border-radius: 15px;
-	border-radius: 12px;
-    border:2px solid #73AD21;
-    padding:5px;
-	font-family:Helvetica, Arial, sans-serif;
-    font-size:12px;
+	-webkit-border-radius: 8px;
+	border: 0px solid #d34836;
+	padding: 5px;
+	height: 35px;
+	width: 270px;
+	color: grey;
+	background-image:url(../img/google-button.png);
 }
 body {
     -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
