@@ -183,3 +183,8 @@ h1 {
     width:100%;                   /* text area width */
     text-align:center;
 }
+hr#foot_hr
+{
+	width: 92%;
+	opacity: 0.1;
+}
