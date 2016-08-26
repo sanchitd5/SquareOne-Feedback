@@ -1,0 +1,54 @@
+
+
+.login_input
+{
+	-moz-border-radius: 15px;
+	border-radius: 8px;
+	border:2px solid grey;
+	padding:5px;
+	font-family:Helvetica;
+	font-size:12px;
+	height: 35px;
+	width: 270px;
+}
+button.login_button
+{
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 8px;
+	padding: 5px;
+	height: 35px;
+	width: 270px;
+}
+button#main_login:hover 
+{
+    background-color: #A9A9A9; 
+    color: white;
+}	
+button#main_login
+{
+
+	border: 2px solid grey;
+	
+	}
+button#fb_login
+{
+	border: 0px solid #3b5998;
+	color: white;
+	background-image:url(../img/fb-button.png);
+}
+button#fb_login:hover
+{
+	background-image:url(../img/fb-button_hover.png);
+	color: white;
+}
+button#g_login
+{
+	border: 0px solid #d34836;
+	color: grey;
+	background-image:url(../img/google-button.png);
+}
+button#g_login:hover
+{
+	background-image:url(../img/google-button_hover.png);
+	color: grey;	
+}
