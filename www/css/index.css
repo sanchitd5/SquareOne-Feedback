@@ -176,3 +176,10 @@ h1 {
     animation:fade 3000ms infinite;
     -webkit-animation:fade 3000ms infinite;
 }
+.foot
+{
+    position:absolute;             /* position in the center of the screen */
+    top:95%;
+    width:100%;                   /* text area width */
+    text-align:center;
+}
