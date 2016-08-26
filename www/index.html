@@ -1,0 +1,94 @@
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <title>SquareOne Feedback</title>
+</head>
+<body>
+	<script src="js/jq.js"></script>
+    <div id='login' class='app'>
+		<table align=center>
+		<tr><td><input type=text id=unme placeholder=Username></td></tr>
+		<tr><td><input type=password id=pass placeholder=Password></td></tr>
+		<tr><td><button id=b_login>Login</button><button id=sign>Sign Up</button></td></tr>
+		</table>
+	</div>
+	<div id='sign_page' class='signup'><form><table align=center>
+	<tr><td><label>Name</label></td><td><input type="text" id="name" placeholder="Jamie Lannister"></td></tr><br>
+	<tr><td><label>Username</label></td><td><input type="text" id="sign_name" placeholder="Lord Commander"></td></tr><br>
+	<tr><td><label>Department</label></td><td><input type="text" id="dept" placeholder="The Red Keep"></td></tr><br>
+	<tr><td><label>E-mail</label></td><td><input type="text" id="mail" placeholder="House Lannister"></td></tr><br>
+	<tr><td><label>Password</label></td><td><input type="password" id="s_pass" placeholder="The Imp"></td></tr><br>
+	<tr><td><label>Confirm Password</label></td><td><input type="password" id="s_pass1" placeholder="Hear Me Roar"></td></tr><br>
+	<tr><td colspan=2><input type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*</td></tr><br>
+	<tr><td><button type="button" id=b_signup>Sign Up</button></td><td> <button type="button" id=b_signupcancel>Cancel</button></td></tr>
+	</table><form></div>
+	<script>
+		jQuery('div#sign_page').hide();
+	</script>
+	<script>
+		jQuery(document).ready(function()
+		{
+		jQuery('button#b_login').click(function()
+		{
+			
+			var uname=jQuery('input:text#unme').val();
+			var pass=jQuery('input:text#pass').val();
+			if(uname=='')
+			{
+				alert('Please Enter a Username');
+			}
+			else
+			{	
+				alert(uname+'will be Logined');
+			}
+		});
+		jQuery('button#sign').click(function()
+		{	jQuery('div#login').hide();
+			jQuery('div#sign_page').show();
+			
+
+		});
+		jQuery('button#b_signup').click(function()
+		{
+			var uname=jQuery('input:text#sign_name').val();
+			var name=jQuery('input:text#name').val();
+			var pass_x=jQuery('input:text#s_pass').val();
+			var pass_y=jQuery('input:text#s_pass1').val();
+			var department=jQuery('input:text#s_dept').val();
+			var email=jQuery('input:text#mail').val();
+			if(uname==''||name==''||department==''||email=='')
+			{
+				alert('Form not filled');
+			}
+			else
+			{
+				if(pass_x==pass_y)
+				{
+					alert(name+'\'s account will be created with username  '+uname );
+				}
+				else
+				{
+					alert('Password and Confirm Password');
+				}
+			}
+		});
+		
+		jQuery('button#b_signupcancel').click(function()
+		{
+			jQuery('div#sign_page').hide();
+			jQuery('div#login').show();
+		});
+		});	
+	</script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</body>
+</html>
