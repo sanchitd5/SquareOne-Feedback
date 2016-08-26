@@ -5,22 +5,22 @@
 
 
 .login_input
-	{
-		-moz-border-radius: 15px;
-		border-radius: 8px;
-		border:2px solid grey;
-		padding:5px;
-		font-family:Helvetica;
-		font-size:12px;
-		height: 35px;
-		width: 270px;
-	}
-.login_button:hover 
+{
+	-moz-border-radius: 15px;
+	border-radius: 8px;
+	border:2px solid grey;
+	padding:5px;
+	font-family:Helvetica;
+	font-size:12px;
+	height: 35px;
+	width: 270px;
+}
+button#main_login:hover 
 {
     background-color: #A9A9A9; 
     color: white;
 }	
-.login_button
+button#main_login
 	{
 		-moz-border-radius: 15px;
 		-webkit-border-radius: 8px;
@@ -29,7 +29,7 @@
 		height: 35px;
 		width: 270px;
 	}
-.fb_button
+button#fb_login
 {
 		-moz-border-radius: 15px;
 		-webkit-border-radius: 8px;
@@ -40,12 +40,12 @@
 		color: white;
 		background-image:url(../img/fb-button.png);
 }
-.fb_button:hover
+button#fb_login:hover
 {
 	background-image:url(../img/fb-button_hover.png);
 	color: white;
-	}
-.g_button
+}
+button#g_login
 {
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 8px;
