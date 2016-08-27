@@ -95,5 +95,5 @@ Sanchit Dang
 		<gap:plugin name="cordova-plugin-splashscreen"  />
 		
 		<gap:plugin name="cordova-plugin-vibration"  />
-		<gap:plugin name="cordova-plugin-whitelist"  />
+		
 	</widget>
