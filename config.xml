@@ -36,12 +36,12 @@ Sanchit Dang
   <plugin name="cordova-plugin-whitelist" source="npm" spec="~1.2.1"/>
   <icon src="icon.png"/>
   <platform name="android">
-    <icon src="www/res/icon/android/drawable-ldpi-icon.png" density="ldpi"/>
-    <icon src="www/res/icon/android/drawable-mdpi-icon.png" density="mdpi"/>
-    <icon src="www/res/icon/android/drawable-hdpi-icon.png" density="hdpi"/>
-    <icon src="www/res/icon/android/drawable-xhdpi-icon.png" density="xhdpi"/>
-    <icon src="www/res/icon/android/drawable-xxhdpi-icon.png" density="xxhdpi"/>
-    <icon src="www/res/icon/android/drawable-xxxhdpi-icon.png" density="xxxhdpi"/>
+   <icon src="www/icon.png" gap:platform="android" gap:density="ldpi" />
+	<icon src="www/res/screen/android/icon.png" density="mdpi" />
+	<icon src="www/res/screen/android/icon.png" density="hdpi" />
+	<icon src="www/res/screen/android/icon.png" density="xhdpi" />
+	<icon src="www/res/screen/android/icon.png" density="xxhdpi" />
+	<icon src="www/res/screen/android/icon.png" density="xxxhdpi" />
     <splash src="www/res/screen/android/drawable-land-ldpi-screen.png" density="land-ldpi"/>
     <splash src="www/res/screen/android/drawable-land-mdpi-screen.png" density="land-mdpi"/>
     <splash src="www/res/screen/android/drawable-land-hdpi-screen.png" density="land-hdpi"/>
