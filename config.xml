@@ -93,7 +93,7 @@ Sanchit Dang
 		<gap:plugin name="cordova-plugin-media"  />
 		<gap:plugin name="cordova-plugin-network-information"  />
 		<gap:plugin name="cordova-plugin-splashscreen"  />
-		<gap:plugin name="cordova-plugin-statusbar"  />
+		
 		<gap:plugin name="cordova-plugin-vibration"  />
 		<gap:plugin name="cordova-plugin-whitelist"  />
 	</widget>
