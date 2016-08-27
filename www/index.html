@@ -50,7 +50,7 @@
 	<script>
 		jQuery(document).ready(function()
 		{
-		jQuery('button#main_login').click(function()
+		jQuery('button#main_login').on("touchend",function()
 		{
 			
 			var uname=jQuery('input:text#unme').val();
@@ -64,13 +64,13 @@
 				alert(uname+'will be Logined');
 			}
 		});
-		jQuery('p#sign').click(function()
+		jQuery('p#sign').on("touchend",function()
 		{	jQuery('div#login').hide();
 			jQuery('div#sign_page').show();
 			
 
 		});
-		jQuery('button#b_signup').click(function()
+		jQuery('button#b_signup').on("touchend",function()
 		{
 			var uname=jQuery('input:text#sign_name').val();
 			var name=jQuery('input:text#name').val();
@@ -95,13 +95,13 @@
 			}
 		});
 		
-		jQuery('p#forget_password').click(function()
+		jQuery('p#forget_password').on("touchend",function()
 		{
 			alert('So Stupid You Are');
 			alert('Contact Lord Chitman');
 		}
 
-		jQuery('button#b_signupcancel').click(function()
+		jQuery('button#b_signupcancel').on("touchend",function()
 		{
 			jQuery('div#sign_page').hide();
 			jQuery('div#login').show();
