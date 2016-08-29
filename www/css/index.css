@@ -147,6 +147,13 @@ h1 {
     width:100%;                   /* text area width */
     text-align:center;
 }
+.welcome_buttons
+{
+    position:absolute;             /* position in the center of the screen */
+    top:85%;
+    width:100%;                   /* text area width */
+    text-align:center;
+}
 hr#foot_hr
 {
 	width: 92%;
