@@ -177,3 +177,43 @@ h1 {
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 20px;
 }
+button#start_b{
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  width: 412px;
+  height: 45px;
+  cursor: pointer;
+  padding-bottom:5px;
+  margin: 0 auto;
+  border: 2px solid rgba(33,224,163,1);
+  -webkit-border-radius: 40px;
+  border-radius: 0px;
+  font: normal 37px 'Pacifico', cursive;
+  color: rgba(255,255,255,1);
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 1px;
+  background: rgba(33,224,163,1);
+  -webkit-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  -moz-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  -o-transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+  transition: background-color 0.3s cubic-bezier(0, 0, 0, 0), color 0.3s cubic-bezier(0, 0, 0, 0), width 0.3s cubic-bezier(0, 0, 0, 0), border-width 0.3s cubic-bezier(0, 0, 0, 0), border-color 0.3s cubic-bezier(0, 0, 0, 0);
+	opacity:0.8;
+  }
+
+button#start_b:hover {
+  font: normal 37px 'Pacifico', cursive;
+  background: rgb(30, 205, 151);
+}
+
+button#start_b:active {
+border: 2px solid rgba(33,224,163,1);
+  color: rgba(33,224,163,1);
+  background: rgba(33,224,163,0.01);
+  -webkit-transition: none;
+  -moz-transition: none;
+  -o-transition: none;
+  transition: none;
+}
