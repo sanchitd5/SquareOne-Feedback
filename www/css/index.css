@@ -66,7 +66,7 @@ body {
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) 
 {
-    .app {
+.app{
 		position:absolute;
         background-position: left center;
         padding: 200px 0px 270px 200px;  /* padding-top + padding-bottom + text area = image height */
@@ -154,8 +154,17 @@ h1 {
     width:100%;                   /* text area width */
     text-align:center;
 }
-hr#foot_hr
+#foot_hr hr
 {
 	width: 92%;
 	opacity: 0.1;
+}
+#welcome_quote p
+{
+	font-size:25px;
+	text-shadow: 0.5px 0.7px black;
+	color:red;
+	text-align:center;
+	font-family: Charcoal;
+		opacity: 0.7;
 }
