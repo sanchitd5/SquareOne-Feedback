@@ -71,14 +71,14 @@
 			}
 			else
 			{	
-				alert(uname+'will be Logined');
+				alert(uname+' will be Logined');
 			}
 		});
 		jQuery('p#sign').on("touchend",function()
-		{	jQuery('div#login').hide();
+		{
+			jQuery('div#login').hide();
 			jQuery('div#sign_page').show();
-			
-
+			jQuery('input:text.signup_input').val('');
 		});
 		</script>
 		<script>
