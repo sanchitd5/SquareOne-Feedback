@@ -35,7 +35,21 @@ body {
                                   /* offset horizontal: half of text area width */
     border: 0px;
 }
-
+.splash
+{
+    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+    position:absolute;             /* position in the center of the screen */
+    left:39%;
+    top:20%;
+    height: 400px;                   /* text area height */
+    width:325px;                   /* text area width */
+    text-align:center;
+    padding:240px 45px 0px 45px;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-115px 0px 0px -157px;  /* offset vertical: half of image height and text area height */
+                                  /* offset horizontal: half of text area width */
+    border: 0px;
+	opacity: 0.8;
+}
 .signup {
     background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
