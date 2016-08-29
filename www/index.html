@@ -129,7 +129,16 @@
 		{
 			alert('Created by Sanchit Dang( 1410992149) for Design \n Navneet Khatkar ( 1410992136) for Database Connectivity \n Puneet Bali(1410992195) for Documentation');
 		});
-		
+		<script>
+		jQuery('button#start_b').on("touchend", function()
+		{
+			jQuery('div#welcome_screen').hide();
+			jQuery('div#welcome_b').hide();
+			jQuery('div#login').show();
+			jQuery('body').css('background' , ' #000 url(img/background.jpg) no-repeat center');
+		}
+		);
+	</script>
 	</script>
 		<script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
