@@ -22,15 +22,15 @@ body {
 
 /* Portrait layout (default) */
 .app {
-    background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
+	background:url(../img/logo.png) no-repeat center top; /* 170px x 200px */
     position:absolute;             /* position in the center of the screen */
     left:39%;
     top:20%;
-    height: 400px;                   /* text area height */
-    width:320px;                   /* text area width */
+                       /* text area height */
+    width:80%;                  /* text area width */
     text-align:center;
-    padding:260px 0px 0px 0px;     /* image height is 200px (bottom 20px are overlapped with text) */
-    margin:-115px 0px 0px -112px;  /* offset vertical: half of image height and text area height */
+    padding:60% 0% 0% 0%;     /* image height is 200px (bottom 20px are overlapped with text) */
+    margin:-25% 0% 0% -28% ;  /* offset vertical: half of image height and text area height */
                                   /* offset horizontal: half of text area width */
     border: 0px;
 }
