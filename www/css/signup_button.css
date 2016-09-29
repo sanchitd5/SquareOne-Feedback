@@ -1,0 +1,35 @@
+
+
+.signup_input
+{
+	-moz-border-radius: 15px;
+	border-radius: 8px;
+	border:2px solid grey;
+	padding:5px;
+	font-family:Helvetica;
+	font-size:12px;
+	height: 35px;
+	width: 100%;
+}
+button.signup_button
+{
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 8px;
+	padding: 5px;
+	height: 30px;
+	width: 45%;
+	margin-left: 2px;
+	margin-right: 2px;
+	border:2px solid grey;
+}
+button#main_login:hover 
+{
+    background-color: #A9A9A9; 
+    color: white;
+}	
+button#main_login
+{
+
+	border: 2px solid grey;
+	
+}
