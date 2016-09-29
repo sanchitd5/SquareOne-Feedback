@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<widget xmlns = "http://www.w3.org/ns/widgets"
+		<widget xmlns = "http://www.w3.org/ns/widgets"
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "tk.squareone.squareone"
 		versionCode=""
 		version   = "pre-alpha 0.0.1">
 		<name>SquareOne</name>
 		<description>
-SquareOne Feedback App
-Made By Sanchit Dang (1410992149) , Navneet Khatkar (1410992136)		</description>
+		SquareOne Feedback App
+		Designed by Sanchit Dang (1410992149)
+		Connected by Navneet Khatkar (1410992136)
+		Documented by Puneet Bali (1410992195)
+		</description>
 		<author href="" email="sanchitd5@live.com">
-Sanchit Dang
+		Sanchit Dang
 		</author>
 <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
