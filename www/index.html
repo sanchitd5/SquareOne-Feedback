@@ -1,83 +1,193 @@
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="format-detection" content="telephone=no" />
-	<meta name="msapplication-tap-highlight" content="no" />
-	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-    
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+	
 	<!--FONT SECTION-->
 	
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"> 
-	<link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet"> 
 	
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     
 	<!--Attached CSS-->
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
-    	<link rel="stylesheet" type="text/css" href="css/login_button.css" />
+    <link rel="stylesheet" type="text/css" href="css/login_button.css" />
 	<link rel="stylesheet" type="text/css" href="css/signup_button.css" />
-    	
-    	<title>SquareOne Feedback</title>
+	<title>SquareOne Feedback</title>
 </head>
-<body id='0'>
-	<script>
-	function onDeviceReady() {
-        // Register the event listener
-        document.addEventListener("backbutton", onBackKeyDown, false);
-	}
-	</script>
-	<script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
-	<div id='welcome_screen' class='splash'>
-		<div id="welcome_div"><p id='welcome_quote'><i>Always Be on SeaFood Diet,<br>You should see food and eat it</i></p>
+<body>
+
+	<script src='jq.js'></script>
+	<script src="js/mailgun_validator.js"></script>
+		
+		<div id='welcome_screen' class='splash'>
+				<div id="welcome_div">
+				<p id='welcome_quote' >Always Be on SeaFood Diet<br>You should see food and eat it</p><hr id='welcome_line'>
+				</div>
 		</div>
-	</div>
+		<div id='welcome_you' class='splash'>
+			<div id="a_2welcome_div">
+				<p id='a_2welcome_quote' >Welcomes You :D</p>
+			</div>
+		</div>
+		<div class='welcome_buttons' id='welcome_b'>
+			Get Started
+		</div>
+	<script>
+			jQuery('.splash').animate(
+			{
+			opacity:0.8,
+			},1000,function(){});
+			jQuery('p#welcome_quote').animate(
+				{
+					'fontSize': '30px',
+				}, 1500,function(){});
+				
+
+			jQuery('div#welcome_div').animate(
+				{
+					opacity: 0.8,
+					'marginTop': '315px',
+					'width':'406px',
+					'marginLeft': '-44.7px',
+				}, 2000,function()
+				{
+						jQuery('div#welcome_b').animate(
+						{
+							opacity: 0.8
+						},2500,function(){});
+						jQuery('div#welcome_div').animate(
+						{
+							'width':'416px',
+							'marginTop': '295.5px',
+							'marginLeft': '-46.3px',
+							
+						}, 200,function()
+						{
+							jQuery('hr#welcome_line').show(1500,function(){});
+							
+						});
+						jQuery('div#a_2welcome_div').animate(
+						{
+							opacity: 0.8,
+						}, 1500,function(){});
+				});
+	</script>
+	<script>
+		jQuery('div#welcome_b').on('touchend click', function()
+		{
+			jQuery('div#welcome_screen').hide();
+			jQuery('div#welcome_you').hide();
+			jQuery('div#welcome_b').hide();
+			jQuery('div#login_page').show(1000,function(){});
+			jQuery('body').css('background' , ' #000 url(img/background.jpg) no-repeat center');
+			jQuery('p#about_us').animate({'fontSize':'10px','marginTop': '5px'},1000,function(){jQuery('div#foot_back').removeAttr('id')});
+		}
+		);
+	</script>
+
+    <div id='login_page' class='app'>
 	
-	<div class='welcome_buttons' id='welcome_b'>
 		<table align='center'>
-		<tr><td><button id='start_b'>Get Started</button></td></tr></table>
+		<tr><td><input type='text' class='login_input_text' id='unme' placeholder='Username'></td></tr>
+		<tr><td><input type='password' class='login_input_text' id='pass' placeholder='Password'></td></tr>
+		<tr><td><button class='login_button' id='main_login'><b>Login</b></button></td></tr>
+		<tr><td><p align='center' id='forget_password' style='font-size:13px;'>Forget Password?</p></td></tr>
+		<tr><td><br><center><img src='img/or.png'></center><br></td></tr>
+		<tr><td><button class='login_button' id='fb_login'><b>Login with Facebook</b></button></td></tr>
+		<tr><td><button class='login_button' id='g_login'><b>Sign in with Google</b></button><br><br></td></tr>
+		<tr><td><p align='center' id='sign' style='font-size:13px;'>Not a user ? Sign Up</p></td></tr>
+		</table>
+		
 	</div>
 
-    <div id='login' class='app'>
-		<table align=center>
-			<tr><td><input type=text class=login_input_text id=unme placeholder=Username></td></tr>
-			<tr><td><input type=password class=login_input_text id=pass placeholder=Password></td></tr>
-			<tr><td><button class=login_button id=main_login><b>Login</b></button></td></tr>
-			<tr><td><p align=center id=forget_password style='font-size:13px;'>Forgot Password?</p></td></tr>
-			<tr><td><br><center><img src='img/or.png'></center><br></td></tr>
-			<tr><td><button class=login_button id=fb_login><b>Login with Facebook</b></button></td></tr>
-			<tr><td><button class=login_button id=g_login><b>Sign in with Google</b></button><br><br></td></tr>
-			<tr><td><p align=center id=sign style='font-size:13px;'>Not a user ? Sign Up</p></td></tr>
-		</table>
-	</div>
+	
 	
 	<div id='sign_page' class='signup'>
-	<form>
-		<table align=center>
-			<tr><td><label>Name</label></td><td><input type="text" id="name" placeholder="Jamie Lannister"></td></tr><br>
-			<tr><td><label>Username</label></td><td><input type="text" id="sign_name" placeholder="Lord Commander"></td></tr><br>
-			<tr><td><label>Department</label></td><td><input type="text" id="dept" placeholder="The Red Keep"></td></tr><br>
-			<tr><td><label>E-mail</label></td><td><input type="text" id="mail" placeholder="House Lannister"></td></tr><br>
-			<tr><td><label>Password</label></td><td><input type="password" id="s_pass" placeholder="The Imp"></td></tr><br>
-			<tr><td><label>Confirm Password</label></td><td><input type="password" id="s_pass1" placeholder="Hear Me Roar"></td></tr><br>
-			<tr><td colspan=2><input type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*</td></tr><br>
-			<tr><td><button type="button" id=b_signup>Sign Up</button></td><td> <button type="button" id=b_signupcancel>Cancel</button></td></tr>
-		</table>
-	<form>
+		
+	<table align='center'>
+		<tr><td><input type="text" class='signup_input' id="name" placeholder="Name"></td></tr><br>
+		<tr><td><input type="text" class='signup_input' id="sign_name" placeholder="Username"></td></tr><br>
+		<tr><td><input type="email" id="email" class='signup_input' placeholder="E-mail"></td></tr><br>
+		<tr><td><div id="v_email"></div></td></tr>
+		<tr><td><input type="password" class='signup_input' id="s_pass" placeholder="Password"></td></tr><br>
+		<tr><td><input type="password" class='signup_input' id="s_pass1" placeholder="Confirm Password"></td></tr><br>
+		<tr><td colspan=2><input type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*<br></td></tr><br>
+		<tr align='center'><td><button type='submit' class='signup_button' id='b_signup'>Sign Up</button>
+						<button  class='signup_button' id='b_signupcancel'>Back</button></td></tr>
+	</table>
+		
 	</div>
+	
+
+	<script>
+	jQuery(document).ready(function()
+	{
+	 	jQuery('#email').keypress(function(e)
+		{
+			if(e.which == 13)
+			{
+		            jQuery('input#mail').trigger('focusout');
+            			return false;
+          		}
+        	});
+
+
+		// attach jquery plugin to validate address
+		jQuery('#email').on('blur',mailgun_validator(
+		{
+		  api_key: 'pubkey-83a6-sl6j2m3daneyobi87b3-ksx3q29',
+		  in_progress: validation_in_progress,
+		  success: validation_success,
+		  error: validation_error,
+		});
+	});
+		function validation_in_progress()
+		{
+			jQuery('div#v_email').html("<img src='img/loading.gif' height='16'/>");
+		}
+		// if email successfull validated
+		function validation_success(data)
+		{
+			alert(get_suggestion_str(data['is_valid'], data['did_you_mean']));
+		};
+	      // if email is invalid
+	      function validation_error(error_message) {
+		jQuery('div#v_email').html(error_message);
+	      }
+	      // suggest a valid email
+	      function get_suggestion_str(is_valid, alternate) {
+		if (is_valid) {
+		  var result = '<span class="success">Address is valid.</span>';
+		  if (alternate) {
+		    result += '<span class="warning"> (Though did you mean <em>' + alternate + '</em>?)</span>';
+		  }
+		  return result
+		} else if (alternate) {
+		  return '<span class="warning">Did you mean <em>' +  alternate + '</em>?</span>';
+		} else {
+		  return '<span class="error">Address is invalid.</span>';
+		}
+	      }
+	</script>
+
+
 	
 	<div class='foot'>
-		<hr id=foot_hr>
-		<p id=about_us>About Us</p>
+		<div id='foot_back'>
+			<hr id='foot_hr'></hr>
+			<p id='about_us'><b>About Us</b></p>
+		<div>
 	</div>
-	
+		
+
+
 	<script>
-		jQuery('div#login').hide();
-		jQuery('div#sign_page').hide();
-	</script>
-	<script>
-		jQuery('button#main_login').on("touchend",function()
+		jQuery('button#main_login').on('touchend click', function()
 		{
 			
 			var uname=jQuery('input:text#unme').val();
@@ -85,79 +195,64 @@
 			if(uname=='')
 			{
 				alert('Please Enter a Username');
+				
 			}
 			else
 			{	
-				alert(uname+' will be Logined');
+				alert(uname+'will be Logined');
+				
 			}
 		});
-		jQuery('p#sign').on("touchend",function()
-		{
-			jQuery('div#login').hide();
-			jQuery('div#sign_page').show();
+		jQuery('p#sign').on('touchend click', function()
+		{				
+			jQuery('div#login_page').hide(1000,function(){});
+			jQuery('div#sign_page').show(1000,function(){});
 			jQuery('input:text.signup_input').val('');
+		});
+	</script>
+	
+		<script>
+		jQuery('button#b_signup').on('touchend click', function()
+		{	
+			return false;
 		});
 		</script>
 		<script>
-		jQuery('button#b_signup').on("touchend",function()
-		{
-			var uname=jQuery('input:text#sign_name').val();
-			var name=jQuery('input:text#name').val();
-			var pass_x=jQuery('input:text#s_pass').val();
-			var pass_y=jQuery('input:text#s_pass1').val();
-			var department=jQuery('input:text#s_dept').val();
-			var email=jQuery('input:text#mail').val();
-			if(uname==''||name==''||department==''||email=='')
-			{
-				alert('Form not filled');
-			}
-			else
-			{
-				if(pass_x==pass_y)
-				{
-					alert(name+'\'s account will be created with username  '+uname );
-				}
-				else
-				{
-					alert('Password and Confirm Password');
-				}
-			}
-		});
-		
-		jQuery('p#forget_password').on("touchend",function()
+		jQuery('p#forget_password').on("touchend click", function()
 		{
 			alert('So Stupid You Are');
 			alert('Contact Lord Chitman');
 		});
-		jQuery('button#b_signupcancel').on("touchend",function()
-		{
-			jQuery('div#sign_page').hide();
-			jQuery('div#login').show();
-		});
-		jQuery('button#fb_login').on("touchend", function()
-		{
-			alert('You ll be logined using Facebook');
-		});
-		jQuery('button#g_login').on("touchend", function()
-		{
-			alert('You ll be logined using Google');
-		});
-		jQuery('p#about_us').on("touchend", function()
-		{
-			alert('Created by Sanchit Dang( 1410992149) for Design \n Navneet Khatkar ( 1410992136) for Database Connectivity \n Puneet Bali(1410992195) for Documentation');
-		});
-		<script>
-		jQuery('button#start_b').on("touchend", function()
-		{
-			jQuery('div#welcome_screen').hide();
-			jQuery('div#welcome_b').hide();
-			jQuery('div#login').show();
-			jQuery('body').css('background' , ' #000 url(img/background.jpg) no-repeat center');
-		}
-		);
+	
 	</script>
+	<script>
+		jQuery('button#b_signupcancel').on("touchend click", function()
+		{
+
+			jQuery('div#sign_page').hide(1000,function(){});
+			jQuery('div#login_page').show(1000,function(){});
+		});
 	</script>
-		<script type="text/javascript" src="cordova.js"></script>
+	<script>
+		jQuery('button#fb_login').on("touchend click", function()
+		{
+			alert('You ll be logined');
+		});
+		jQuery('button#g_login').on("touchend click", function()
+		{
+			alert('You ll be logined');
+		});
+		jQuery('div#foot_back').on("touchend click", function()
+		{
+			alert('Created by Sanchit Dang( 1410992149) , Navneet Khatkar ( 1410992136)  , Puneet Bali(1410992195)');
+		});
+	</script>
+
+<script>
+jQuery('div#login_page').hide();
+jQuery('div#sign_page').hide();
+</script>
+    <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
