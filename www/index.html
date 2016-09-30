@@ -213,8 +213,41 @@
 	
 		<script>
 		jQuery('button#b_signup').on('touchend click', function()
+		{
+		var Xname=(jQuery('#name').val());
+		var Xu_name=(jQuery('#sign_name').val());
+		var Xemail=(jQuery('#email').val());
+		var X_pass=(jQuery('#spass').val());
+		var X_pass2=(jQuery('#spass1').val());
+		if(Xname.length>0&&Xu_name.length>0&&Xemail.length>0&&X_pass.length>0&&X_pass2.length>0)
 		{	
-			return false;
+			if(jQuery("#terms").is(":checked"))
+				{
+					if((jQuery('#spass').val())==(jQuery('#spass1').val())
+					{
+						alert(Xname);
+						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#email').val())+"&password="+(jQuery('#spass').val());
+						jQuery.ajax({
+						type: "POST",
+						url:'http://www.squareonefeedback.com/Scripts/signup.php',
+						data: data_send,
+						crossDomain: true,
+						cache: false,
+						success: function(data)
+						{
+						alert(data);
+						},
+						failure:function()
+						{
+						alert('not done');
+						}
+						});
+					}
+					else{alert("password does not match");}
+				}
+				else{alert("Please accept terms and conditions.");}
+		}else{alert("Form not Completed");}
+		return false;
 		});
 		</script>
 		<script>
