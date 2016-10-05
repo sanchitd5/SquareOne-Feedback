@@ -111,13 +111,13 @@
 	<div id='sign_page' class='signup'>
 		
 	<table align='center'>
-		<tr><td><input type="text" class='signup_input' id="name" placeholder="Name"></td></tr><br>
-		<tr><td><input type="text" class='signup_input' id="sign_name" placeholder="Username"></td></tr><br>
-		<tr><td><input type="email" id="email" class='signup_input' placeholder="E-mail"></td></tr><br>
+		<tr><td><input type="text" class='signup_input' required id="name" placeholder="Name"></td></tr><br>
+		<tr><td><input type="text" class='signup_input' required id="sign_name" placeholder="Username"></td></tr><br>
+		<tr><td><input type="email" id="email" class='signup_input' required placeholder="E-mail"></td></tr><br>
 		<tr><td><div id="v_email"></div></td></tr>
-		<tr><td><input type="password" class='signup_input' id="s_pass" placeholder="Password"></td></tr><br>
-		<tr><td><input type="password" class='signup_input' id="s_pass1" placeholder="Confirm Password"></td></tr><br>
-		<tr><td colspan=2><input type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*<br></td></tr><br>
+		<tr><td><input required type="password" class='signup_input' id="s_pass" placeholder="Password"></td></tr><br>
+		<tr><td><input required type="password" class='signup_input' id="s_pass1" placeholder="Confirm Password"></td></tr><br>
+		<tr><td colspan=2><input required type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*<br></td></tr><br>
 		<tr align='center'><td><button type='submit' class='signup_button' id='b_signup'>Sign Up</button>
 						<button  class='signup_button' id='b_signupcancel'>Back</button></td></tr>
 	</table>
@@ -180,13 +180,10 @@
 	
 	<div class='foot'>
 		<div id='foot_back'>
-			<hr id='foot_hr'></hr>
+			<hr id='foot_hr'>
 			<p id='about_us'><b>About Us</b></p>
 		<div>
 	</div>
-		
-
-
 	<script>
 		jQuery('button#main_login').on('touchend click', function()
 		{
@@ -220,11 +217,14 @@
 		var Xemail=(jQuery('#email').val());
 		var X_pass=(jQuery('#spass').val());
 		var X_pass2=(jQuery('#spass1').val());
-		if(Xname.length>0&&Xu_name.length>0&&Xemail.length>0&&X_pass.length>0&&X_pass2.length>0)
+		if((Xname.length>0)&&(Xu_name.length>0)&&(Xemail.length>0))
+//		
+			if(Xname.length>0&&Xu_name.length>0&&Xemail.length>0&&X_pass.length>0&&X_pass2.length>0)
 		{	
 			if(jQuery("#terms").is(":checked"))
 				{
-					if((jQuery('#spass').val())==(jQuery('#spass1').val())
+					if(1)
+//					if((jQuery('#spass').val())==(jQuery('#spass1').val())
 					{
 						alert(Xname);
 						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#email').val())+"&password="+(jQuery('#spass').val());
