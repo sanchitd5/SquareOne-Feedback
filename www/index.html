@@ -209,48 +209,49 @@
 		});
 	</script>
 	
-		<script>
-		jQuery('button#b_signup').on('touchend click', function()
-		{
+	<script>
+	jQuery('button#b_signup').on('touchend click', function()
+	{
 		var Xname=(jQuery('#name').val());
-		var Xu_name=(jQuery('#sign_name').val());
-		var Xemail=(jQuery('#email').val());
-		var X_pass=(jQuery('#spass').val());
-		var X_pass2=(jQuery('#spass1').val());
-		if((Xname.length>0)&&(Xu_name.length>0)&&(Xemail.length>0))
-//		
-			if(Xname.length>0&&Xu_name.length>0&&Xemail.length>0&&X_pass.length>0&&X_pass2.length>0)
-		{	
-			if(jQuery("#terms").is(":checked"))
-				{
-					if(1)
-//					if((jQuery('#spass').val())==(jQuery('#spass1').val())
+		var Xuname=(jQuery('#sign_name').val());
+		var Xemail=(jQuery('#Xmail').val());
+		var Xpass=(jQuery("input[type=password]#s_pass").val());
+		var Xpass2=(jQuery("input[type=password]#s_pass1").val());
+		if(Xname!=''&&Xuname!=''&&Xemail!=''&&Xpass!=''&&Xpass2!='')
+		{if(jQuery("#terms").is(":checked")){
+			if(Xpass==Xpass2)
+			{	jQuery('#statusX').text('if passed');
+			var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#Xmail').val())+"&password="+(jQuery("input[type=password]#s_pass").val());
+					jQuery.ajax({
+					type: "POST",
+					url:'http://www.squareonefeedback.com/Scripts/signup.php',
+					data: data_send,
+					crossDomain: true,
+					cache: false,
+					success: function(data)
 					{
-						alert(Xname);
-						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#email').val())+"&password="+(jQuery('#spass').val());
-						jQuery.ajax({
-						type: "POST",
-						url:'http://www.squareonefeedback.com/Scripts/signup.php',
-						data: data_send,
-						crossDomain: true,
-						cache: false,
-						success: function(data)
-						{
-						alert(data);
-						},
-						failure:function()
-						{
-						alert('not done');
-						}
-						});
+					jQuery('#statusX').text(data);
+					},
+					failure:function()
+					{
+					jQuery('#statusX').text('Not Done');
+					},
+					beforeSend: function(data)
+					{
+					jQuery('#statusX').text('In Progress');
+					jQuery('#statusX').text('In Progress.');
+					jQuery('#statusX').text('In Progress..');
+					jQuery('#statusX').text('In Progress');
+					jQuery('#statusX').text('In Progress.');
+					jQuery('#statusX').text('In Progress..');
 					}
-					else{alert("password does not match");}
-				}
-				else{alert("Please accept terms and conditions.");}
+					});
+				}else{alert("password does not match");}
+			}else{alert("Please accept terms and conditions.");}
 		}else{alert("Form not Completed");}
 		return false;
 		});
-		</script>
+	</script>
 		<script>
 		jQuery('p#forget_password').on("touchend click", function()
 		{
