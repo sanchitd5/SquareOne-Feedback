@@ -191,26 +191,26 @@
 		var pass=(jQuery("input[type=password]#pass").val());
 		var data_login="name="+name_x+"&password="+pass;
 		jQuery.ajax({
-		type: "POST",
-		url:'http://www.squareonefeedback.com/Scripts/login.php',
-		data: data_login,
-		crossDomain: true,
-		cache: false,
-		success: function(data){
-			if(data=="dummy")
-			{
-			alert('User does not exists');
-			alert('Please SignUp');
-			}
-			else
-			{
-				if(data=="true"){
-				alert("User exists and you will be logged in");
-				}else if(data=="false"){
-				alert("User exists but password is incorrect");}
-			}}
-		}
-		});
+			type: "POST",
+			url:'http://www.squareonefeedback.com/Scripts/login.php',
+			data: data_login,
+			crossDomain: true,
+			cache: false,
+			success: function(data){
+							if(data=="dummy")
+							{
+								alert('User does not exists');
+								alert('Please SignUp');
+							}
+							else
+							{
+								if(data=="true")
+								alert("User exists and you will be logged in");
+								else if(data=="false")
+								alert("User exists but password is incorrect");
+							}
+						}
+				});
 		return false;
 		});
 		jQuery('p#sign').on('touchend click', function()
