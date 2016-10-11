@@ -204,7 +204,10 @@
 			}
 			else
 			{
-			alert(data);
+				if(data=="true"){
+				alert("User exists and you will be logged in");
+				}else if(data=="false"){
+				alert("User exists but password is incorrect");}
 			}}
 		}
 		});
