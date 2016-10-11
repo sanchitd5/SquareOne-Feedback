@@ -185,12 +185,8 @@
 		<div>
 	</div>
 	<script>
-		jQuery('button#main_login').on('touchend click', function()
+		jQuery('#main_login').on('touchend click', function()
 		{
-			
-jQuery('#main_login').on('touchend click', function()
-		{
-		
 		var name_x=(jQuery("input:text#unme").val());
 		var pass=(jQuery("input[type=password]#pass").val());
 		var data_login="name="+name_x+"&password="+pass;
@@ -203,26 +199,17 @@ jQuery('#main_login').on('touchend click', function()
 		success: function(data){
 			if(data=="dummy")
 			{
-			alert('You are not blessed by Lord Chitman');
+			alert('User does not exists');
+			alert('Please SignUp');
 			}
 			else
 			{
-			var i=0;
-			var temp=[];
-			for(i=1;i<data.length-1;i++)
-			{
-				temp[i-1]=data[i];
-			}
-			var tempX=temp.join('');
-			var login_obj=JSON.parse(tempX);
-			if((login_obj.username)==name_x)
-			{
-			alert('User Exists');
+			alert(data);
 			}}
 		}
 		});
 		return false;
-		});		});
+		});
 		jQuery('p#sign').on('touchend click', function()
 		{				
 			jQuery('div#login_page').hide(1000,function(){});
