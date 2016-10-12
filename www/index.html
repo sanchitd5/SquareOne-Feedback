@@ -249,14 +249,17 @@
 		{
 			alert('Functionality Maybe Added');
 		});
-		jQuery('div#foot_back').on("touchend click", function()
+		jQuery('div.foot').on("touchend click", function()
 		{
 			alert('Designed and Connected By Sanchit Dang (1410992149)');
 			alert('Database Handled By Navneet Khatkar (1410992136)');
 			alert('Documented By Puneet Bali (1410992195)');
 		});
 	</script>
-
+	<script>
+	jQuery('#input').on('focus',function(){jQuery('div.foot').hide();});	
+	jQuery('#input').on('blur',function(){jQuery('div.foot').show();});
+	</script>
 <script>
 jQuery('div#login_page').hide();
 jQuery('div#sign_page').hide();
