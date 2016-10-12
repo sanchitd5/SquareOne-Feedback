@@ -105,26 +105,23 @@
 
 	
 	
-	<div id='sign_page' class='signup'>
-		
-	<table align='center'>
-		<tr><td><input type="text" class='signup_input' required id="name" placeholder="Name"></td></tr><br>
-		<tr><td><input type="text" class='signup_input' required id="sign_name" placeholder="Username"></td></tr><br>
-		<tr><td><input type="email" id="email" class='signup_input' required placeholder="E-mail"></td></tr><br>
-		<tr><td><div id="v_email"></div></td></tr>
-		<tr><td><input required type="password" class='signup_input' id="s_pass" placeholder="Password"></td></tr><br>
-		<tr><td><input required type="password" class='signup_input' id="s_pass1" placeholder="Confirm Password"></td></tr><br>
-		<tr><td colspan=2><input required type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*<br></td></tr><br>
-		<tr align='center'><td><button type='submit' class='signup_button' id='b_signup'>Sign Up</button>
-						<button  class='signup_button' id='b_signupcancel'>Back</button></td></tr>
-	</table>
-		
-	</div>
-	
+	<div id='sign_page' class='signup'>		
+		<table align='center'>
+			<tr><td><input type="text" class='signup_input' id="name" placeholder="Name"></td></tr><br>
+			<tr><td><input type="text" class='signup_input' id="sign_name" placeholder="Username"></td></tr><br>
+			<tr><td><input type="email" id="Xmail" class='signup_input' placeholder="E-mail"></td></tr><br>
+			<tr><td><input type="password" class='signup_input' id="s_pass" placeholder="Password"></td></tr><br>
+			<tr><td><input type="password" class='signup_input' id="s_pass1" placeholder="Confirm Password"></td></tr><br>
+			<tr><td colspan=2><input type="checkbox" name='trms' id='terms' unchecked> I accept the terms and conditions*<br></td></tr><br>
+			<tr></tr><tr></tr>
+			<tr align='center'><td><button class='signup_button' id='b_signup'>Sign Up</button>
+									<button  class='signup_button' id='b_signupcancel'>Back</button></td></tr>
+			<tr><td><div id="X_ALERT" class="alert">
+			<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+			<span align='center'  id="statusX"></span></div></td></tr>
+		</table>
+	</div>	
 
-
-
-	
 	<div class='foot'>
 		<div id='foot_back'>
 			<hr id='foot_hr'>
@@ -132,34 +129,44 @@
 		</div>
 	</div>
 	<script>
+	function login_fun(data){
+	if(data=="T")
+	alert("User exists and you will be logged in");
+	}
 		jQuery('#main_login').on('touchend click', function()
 		{
 		var name_x=(jQuery("input:text#unme").val());
 		var pass=(jQuery("input[type=password]#pass").val());
 		var data_login="name="+name_x+"&password="+pass;
-		jQuery.ajax({
+		if(name_x==''&&pass=='')
+		alert('Please Enter the details');
+		else{
+			jQuery.ajax({
 			type: "POST",
 			url:'http://www.squareonefeedback.com/Scripts/login.php',
 			data: data_login,
 			crossDomain: true,
 			cache: false,
 			success: function(data){
-							if(data=="dummy")
-							{
-								alert('User does not exists');
-								alert('Please SignUp');
-							}
-							else
-							{
-								if(data=="T")
-								alert("User exists and you will be logged in");
-								else if(data=="F")
-								alert("User exists but password is incorrect");
-							}
-						}
-				});
+				if(data=="dummy")
+				{
+				alert('User does not exists');
+				alert('Please SignUp');
+				}
+				else
+				{
+					if(data=="T"){
+					login_fun(data);
+					}
+					else if(data=="F"){
+					alert("User exists but password is incorrect");}
+				}
+			}
+			});}
 		return false;
 		});
+		</script>
+		<script>
 		jQuery('p#sign').on('touchend click', function()
 		{				
 			jQuery('div#login_page').hide(1000,function(){});
@@ -252,5 +259,6 @@ jQuery('div#sign_page').hide();
     <script type="text/javascript">
         app.initialize();
     </script>
+
 </body>
 </html>
