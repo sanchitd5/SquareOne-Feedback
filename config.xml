@@ -14,6 +14,7 @@
 		<author href="" email="sanchitd5@live.com">
 		Sanchit Dang
 		</author>
+<name>SquareOne Feedback - preAlpha</name>
 <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
