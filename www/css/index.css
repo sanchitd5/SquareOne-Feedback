@@ -2,8 +2,9 @@
 * {
     -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */
 }
-body {
-   -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+body
+{
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
     -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
     -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
 	background: url(../img/background1.jpg) no-repeat center;
@@ -15,10 +16,8 @@ body {
     margin:0px;
     padding:0px;
     width:100%;
-	color: white;	
+	color: white;
 }
-
-
 
 /* Portrait layout (default) */
 .app {
@@ -161,7 +160,7 @@ h1 {
   border: 2px solid rgba(33,224,163,1);
   -webkit-border-radius: 40px;
   border-radius: 0px;
-  font: normal 37px 'Pacifico', cursive;
+  font: normal 27px 'Pacifico', cursive;
   color: rgba(255,255,255,1);
   text-align: center;
   -o-text-overflow: clip;
@@ -177,7 +176,7 @@ h1 {
 
 }
 .welcome_buttons:hover {
-  font: normal 37px 'Pacifico', cursive;
+  font: normal 27px 'Pacifico', cursive;
   background: rgb(30, 205, 151);
 }
 
@@ -216,7 +215,7 @@ div#welcome_div
 {
 	background-color: ;
 	margin-top: -35px;
-	margin-left: 0px;
+	margin-left: 0%;
 	opacity: 0.2;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 0px;
@@ -241,8 +240,8 @@ p#a_2welcome_quote
 div#a_2welcome_div 
 {
 	background-color: white;
-	margin-top: -35px;
-	margin-left: 0px;
+	margin-top: -20%;
+	margin-left: 10%;
 	opacity: 0;
 	-moz-border-radius: 15px;
 	-webkit-border-radius: 5px;
@@ -255,6 +254,7 @@ div#foot_back
 	background-color: grey;
 	opacity:0.8;
 }
+
 .alert {
     padding: 10px;
     background-color: #f44336; /* Red */
