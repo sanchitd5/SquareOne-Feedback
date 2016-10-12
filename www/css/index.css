@@ -60,39 +60,6 @@ body
                                   /* offset horizontal: half of text area width */
     border: 0px;
 }
-/*
-/* Landscape layout (with min-width) */
-@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) 
-{
-    .app {
-		position:absolute;
-        background-position: left center;
-        padding: 200px 0px 270px 200px;  /* padding-top + padding-bottom + text area = image height */
-        margin: -120px 0px 0px -210px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-		left: 30%;
-		top: -10%;
-	    height: 220px ;                   /* text area height */
-		width:450px;                   /* text area width */
-		
-	}
-
-    .signup {
-        background-position:left center;
-        padding:0px 0px 0px 170px;  /* padding-top + padding-bottom + text area = image height */
-        margin:-90px 0px 0px -198px;  /* offset vertical: half of image height */
-                                      /* offset horizontal: half of image width and text area width */
-		font-variant:initial;
-		color: white;
-    }
-	.foot
-	{
-		opacity: 0;
-    margin: -30px 0px 0px 0px; 
-    width:100%;                   /* text area width */
-    text-align:center;
-	}
-}*/
 
 h1 {
     font-size:24px;
