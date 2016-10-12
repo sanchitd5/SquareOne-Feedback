@@ -174,8 +174,7 @@
 			jQuery('input:text.signup_input').val('');
 		});
 	</script>
-	
-	<script>
+	<script>		
 	jQuery('button#b_signup').on('touchend click', function()
 	{
 		var Xname=(jQuery('#name').val());
@@ -183,42 +182,52 @@
 		var Xemail=(jQuery('#Xmail').val());
 		var Xpass=(jQuery("input[type=password]#s_pass").val());
 		var Xpass2=(jQuery("input[type=password]#s_pass1").val());
+		
 		if(Xname!=''&&Xuname!=''&&Xemail!=''&&Xpass!=''&&Xpass2!='')
-		{if(jQuery("#terms").is(":checked")){
-			if(Xpass==Xpass2)
-			{	jQuery('#statusX').text('if passed');
-			var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#Xmail').val())+"&password="+(jQuery("input[type=password]#s_pass").val());
-					jQuery.ajax({
-					type: "POST",
-					url:'http://www.squareonefeedback.com/Scripts/signup.php',
-					data: data_send,
-					crossDomain: true,
-					cache: false,
-					success: function(data)
+		{	
+			
+			if(jQuery("#terms").is(":checked"))
+				{
+					if(Xpass==Xpass2)
 					{
-					jQuery('#statusX').text(data);
-					},
-					failure:function()
-					{
-					jQuery('#statusX').text('Not Done');
-					},
-					beforeSend: function(data)
-					{
-					jQuery('#statusX').text('In Progress');
-					jQuery('#statusX').text('In Progress.');
-					jQuery('#statusX').text('In Progress..');
-					jQuery('#statusX').text('In Progress');
-					jQuery('#statusX').text('In Progress.');
-					jQuery('#statusX').text('In Progress..');
+						jQuery('div#X_ALERT').show(1000,function(){});
+						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#Xmail').val())+"&password="+(jQuery("input[type=password]#s_pass").val());
+						jQuery.ajax({
+						type: "POST",
+						url:'http://www.squareonefeedback.com/Scripts/signup.php',
+						data: data_send,
+						crossDomain: true,
+						cache: false,
+						success: function(data)
+						{
+						jQuery('#statusX').text(data);
+						},
+						failure:function()
+						{
+						jQuery('#statusX').text('Not Done');
+						},
+						beforeSend: function(data)
+						{
+						jQuery('#statusX').text('In Progress');
+						jQuery('#statusX').text('In Progress.');
+						jQuery('#statusX').text('In Progress..');
+						jQuery('#statusX').text('In Progress');
+						jQuery('#statusX').text('In Progress.');
+						jQuery('#statusX').text('In Progress..');
+						}
+						});
+						
 					}
-					});
-				}else{alert("password does not match");}
-			}else{alert("Please accept terms and conditions.");}
-		}else{alert("Form not Completed");}
+					else{jQuery('div#X_ALERT').show(1000,function(){jQuery('#statusX').text("Password does not match");});
+					}
+				}
+				else
+				{jQuery('div#X_ALERT').show(1000,function(){jQuery('#statusX').text("Please accept terms and conditions.");});}
+		}else{jQuery('div#X_ALERT').show(1000,function(){jQuery('#statusX').text("Form not Completed");});}
 		return false;
-		});
+	});
 	</script>
-		<script>
+	<script>
 		jQuery('p#forget_password').on("touchend click", function()
 		{
 			alert('Contact us at support@squareonefeedback.com');
@@ -253,6 +262,7 @@
 <script>
 jQuery('div#login_page').hide();
 jQuery('div#sign_page').hide();
+jQuery('div#X_ALERT').hide();
 </script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
