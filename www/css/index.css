@@ -60,7 +60,7 @@ body
                                   /* offset horizontal: half of text area width */
     border: 0px;
 }
-
+/*
 /* Landscape layout (with min-width) */
 @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) 
 {
@@ -92,7 +92,7 @@ body
     width:100%;                   /* text area width */
     text-align:center;
 	}
-}
+}*/
 
 h1 {
     font-size:24px;
