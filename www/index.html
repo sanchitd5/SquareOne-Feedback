@@ -8,15 +8,17 @@
 	<!--FONT SECTION-->
 	
 	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet"> 
-	
+	<link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     
 	<!--Attached CSS-->
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
-    <link rel="stylesheet" type="text/css" href="css/login_button.css" />
+	<link rel="stylesheet" type="text/css" href="css/login_button.css" />
 	<link rel="stylesheet" type="text/css" href="css/signup_button.css" />
+	<link rel="stylesheet" type="text/css" href="css/menu_table.css" />
 	<title>SquareOne Feedback</title>
 </head>
 <body>
@@ -24,7 +26,6 @@
 	<script src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous">
 	</script>
 	<script src="js/mailgun_validator.js"></script>
-		
 		<div id='welcome_screen' class='splash'>
 				<div id="welcome_div">
 				<p id='welcome_quote' >Always Be on SeaFood Diet<br>You should see food and eat it</p><hr id='welcome_line'>
@@ -121,18 +122,45 @@
 			<span align='center'  id="statusX"></span></div></td></tr>
 		</table>
 	</div>	
+		<div class='head_main'>SquareOne Feedback
+	</div>
+	<div class='main_ui'>
+	<table id='nav_buttons' cellpadding='10%'  class='main_ui_button_space'>
+		<tr>
+			<td class='main_buttons_td' id='menu_button' colspan='2' ><center><img height='110px' width='110px' src='img/menu.png'></center></td>
+		</tr>
+		<tr>
+			<td class='main_buttons_td' colspan='2'><center><img height='110px' width='110px' src='img/feedback.png'></center></td>
+		</tr>
+		<tr>
+			<td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
+		</tr>
+	</table>
+	<div id='menu_card'>
+	<table border='1' id='menu_card_table'>
+	<tr><th>Item Name: </th><th>Price</th><tr>
+	</table>
 
-	<div class='foot'>
+	</div>
+	</div>
+		<div class='foot'>
 		<div id='foot_back'>
 			<hr id='foot_hr'>
 			<p id='about_us'><b>About Us</b></p>
 		</div>
 	</div>
+
+	<div class='foot_main'>
+		<div id='foot_buttons'>
+		<center>
+		<ul id='inline_ul_foot'>
+		<li class='main_foot_li' id='main_foot_li_L'><div class='main_ui_foot_buttons' id='name_display_foot'></div></li>
+		<li class='main_foot_li' id='main_foot_li_AboutUS'><div class='main_ui_foot_buttons'>About Us</div></li>
+		</ul></center>
+		</div>
+	</div>
+
 	<script>
-	function login_fun(data){
-	if(data=="T")
-	alert("User exists and you will be logged in");
-	}
 		jQuery('#main_login').on('touchend click', function()
 		{
 		var name_x=(jQuery("input:text#unme").val());
@@ -155,17 +183,13 @@
 				}
 				else
 				{
-					if(data=="T"){
-					login_fun(data);
-					}
-					else if(data=="F"){
-					alert("User exists but password is incorrect");}
+					login_fun(data,name_x);
 				}
 			}
 			});}
 		return false;
 		});
-		</script>
+	</script>
 		<script>
 		jQuery('p#sign').on('touchend click', function()
 		{				
@@ -260,11 +284,63 @@
 	jQuery('input').on('focus',function(){jQuery('.foot').hide();});	
 	jQuery('input').on('blur',function(){jQuery('.foot').show();});
 	</script>
-<script>
-jQuery('div#login_page').hide();
-jQuery('div#sign_page').hide();
-jQuery('div#X_ALERT').hide();
-</script>
+	<script>
+	jQuery('#menu_button1').on('click touchend',function(){
+		jQuery('.foot_main').hide();
+		jQuery('#nav_buttons').hide();
+		retrive_menu_info();
+		jQuery('#menu_card').show();
+	});
+	</script>
+	<script>
+	initial();
+	function login_fun(data,username){
+	if(data=="T")
+	{
+		load_mainui();
+		jQuery('#name_display_foot').text('Welcome! '+ username);
+	}else if(data=="F"){
+		alert("Incorrect Passord");}
+	}
+	function retrive_menu_info()
+	{	
+		jQuery('#menu_card_table').html("<tr><th>Item Name: </th><th>Price</th><tr>");
+		jQuery('#main_foot_li_About_US').hide();
+		jQuery('#main_foot_li_R').show();
+		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
+			jQuery.each(result, function(i, field){
+				jQuery('#menu_card_table').append("<tr class='menu_item_click' name='"+field.item_id+"'><td>"+field.item_name+"</td><td>Rs."+field.price+"</td></tr>");
+			});
+     		}); 
+	}
+	jQuery('menu_item_click').on('click touchend',function(){
+		var item_id=jQuery(this).attr('name');
+	});
+	function initial()
+	{
+	jQuery('div#login_page').hide();
+	jQuery('div#sign_page').hide();
+	jQuery('div#X_ALERT').hide();
+	jQuery('.head_main').hide();
+	jQuery('#main_ui').hide();
+	jQuery('#foot_main').hide();
+	jQuery('#menu_card').hide();
+	jQuery('#nav_buttons').hide();
+	jQuery('#foot_buttons').hide();
+	
+	}
+	function load_mainui(){
+	jQuery('.head_main').show();
+	jQuery('#main_ui').show();
+	jQuery('#menu_card').hide();
+	jQuery('div#login_page').hide();
+	jQuery('body').css('background' , ' #000 url(img/main_ui.png) no-repeat center');
+	jQuery('.foot').hide(100,function(){});
+	jQuery('.foot_main').show(100,function(){});
+	jQuery('#nav_buttons').show();
+	jQuery('#foot_buttons').show();
+	}
+	</script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
