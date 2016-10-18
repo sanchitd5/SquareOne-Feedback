@@ -285,6 +285,9 @@
 	jQuery('input').on('blur',function(){jQuery('.foot').show();});
 	</script>
 	<script>
+	jQuery('.head_main').on('click touchend',function(){
+	load_mainui();
+	});
 	jQuery('#menu_button1').on('click touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
