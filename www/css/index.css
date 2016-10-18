@@ -17,6 +17,8 @@ body
     padding:0px;
     width:100%;
 	color: white;
+	background-size: cover;
+
 }
 
 /* Portrait layout (default) */
@@ -59,6 +61,27 @@ body
     margin:-25% 0% 0% -28% ;  /* offset vertical: half of image height and text area height */
                                   /* offset horizontal: half of text area width */
     border: 0px;
+}
+.main_ui {
+    position:absolute;             /* position in the center of the screen */
+
+    width:80%;                  /* text area width */
+    text-align:center;
+    padding:19% 0% 0% 0%;     /* image height is 200px (bottom 20px are overlapped with text) */
+	display: table-cell;   
+    vertical-align: middle;
+    
+}
+.menu_container {
+    position:absolute;             /* position in the center of the screen */
+
+    width:80%;                  /* text area width */
+    text-align:center;
+    padding:19% 0% 0% 0%;     /* image height is 200px (bottom 20px are overlapped with text) */
+	display: table-cell;   
+    vertical-align: middle;
+	background:rgba(255,255,255,.2);
+    
 }
 
 h1 {
@@ -108,7 +131,15 @@ h1 {
 .foot
 {
     position:absolute;             /* position in the center of the screen */
-    top:92%;
+    bottom: 0%;
+    width:100%;                   /* text area width */
+    text-align:center;
+	
+	}
+.foot_main
+{
+    position:absolute;             /* position in the center of the screen */
+    bottom: 0%;
     width:100%;                   /* text area width */
     text-align:center;
 	
@@ -249,4 +280,91 @@ div#foot_back
 /* When moving the mouse over the close button */
 .closebtn:hover {
     color: black;
+}
+.foot_main
+{
+    position:absolute;             /* position in the center of the screen */
+	bottom: 0%;
+    width:100%;                   /* text area width */
+    text-align:center;
+	background:rgba(0,0,0,1);
+}
+.head_main
+{
+    position:fixed;
+	top: 0%;
+    width:100%;                   /* text area width */
+    text-align:center;
+	opacity: 0.8;
+	font: normal 40px 'Yesteryear', cursive;
+	background:rgba(0,0,0,.7);
+	height:52px;
+	padding-top: 2px;
+	z-index: 54651651;
+}
+#inline_ul_foot{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+	height:52px;
+}
+
+#main_foot_li_L {
+    float: left;
+	padding-left:5%;
+}
+#main_foot_li_R {
+    float: right;
+	padding-right:5%;
+}
+#main_foot_li_AboutUS {
+    float: right;
+	padding-right:5%;
+}
+
+.main_foot_li {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 2%;
+    text-decoration: none;
+
+}
+.main_ui_foot_buttons{
+  width: 100%;
+  height: 20%;
+  cursor: pointer;
+  border: 0px;
+  position:relative;
+  padding: auto;
+
+  font: normal 15px 'Pacifico', cursive;
+
+  text-align: center;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  letter-spacing: 1px;
+}
+/* Change the link color to #111 (black) on hover */
+.main_foot_li a:hover {
+    background-color: #111;
+}
+.main_ui_button_space{
+	 
+	left: 15%;
+	
+	position:relative;
+	
+	border-spacing: 15px;
+    border-collapse: separate;
+}
+.main_buttons_td{
+	background:rgba(255,255,255,.2); 
+}
+.main_buttons_td:hover{
+	background:rgba(0,0,0,.5); 
+}
+.main_buttons_td:active{
+	background:rgba(0,0,0,.9); 
 }
