@@ -12,72 +12,43 @@
 	<link href="https://fonts.googleapis.com/css?family=Euphoria+Script" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Bangers" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Yesteryear" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Nova+Flat" rel="stylesheet">
+
 	<meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
     
 	<!--Attached CSS-->
 	<link rel="stylesheet" type="text/css" href="css/index.css" />
 	<link rel="stylesheet" type="text/css" href="css/login_button.css" />
 	<link rel="stylesheet" type="text/css" href="css/signup_button.css" />
-	<link rel="stylesheet" type="text/css" href="css/menu_table.css" />
+	<link rel="stylesheet" type="text/css" href="css/menu_cards.css" />
 	<title>SquareOne Feedback</title>
 </head>
 <body>
 
-	<script src="http://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous">
+	<script src="js/jQuery.js">
 	</script>
 	<script src="js/mailgun_validator.js"></script>
 		<div id='welcome_screen' class='splash'>
-				<div id="welcome_div">
-				<p id='welcome_quote' >Always Be on SeaFood Diet<br>You should see food and eat it</p><hr id='welcome_line'>
-				</div>
+				
 		</div>
-		<div id='welcome_you' class='splash'>
-			<div id="a_2welcome_div">
-				<p id='a_2welcome_quote' >Welcomes You :D</p>
-			</div>
-		</div>
+
 		<div class='welcome_buttons' id='welcome_b'>
 			Get Started
 		</div>
+	<script>
+
+			jQuery('div#welcome_b').animate(
+						{
+							opacity: 0.8
+						},2500,function(){});
+	</script>
 	<script>
 			jQuery('.splash').animate(
 			{
 			opacity:0.8,
 			},1000,function(){});
-			jQuery('p#welcome_quote').animate(
-				{
-					'fontSize': '19px',
-				}, 1500,function(){});
-			jQuery('div#welcome_div').animate(
-				{
-					opacity: 0.8,
-					'marginTop': '315px',
-					'width':'406px',
-		
-				}, 2000,function()
-				{
-						jQuery('div#welcome_b').animate(
-						{
-							opacity: 0.8
-						},2500,function(){});
-						jQuery('div#welcome_div').animate(
-						{
-							'width':'416px',
-							'marginTop': '295.5px',
-							
-						}, 200,function()
-						{
-							jQuery('hr#welcome_line').show(1500,function(){});
-							
-						});
-						jQuery('div#a_2welcome_div').animate(
-						{
-							opacity: 0.8,
-						}, 1500,function(){});
-				});
-	</script>
-	<script>
-		jQuery('div#welcome_b').on('touchend click', function()
+	jQuery('div#welcome_b').on('touchend click', function()
 		{
 			jQuery('div#welcome_screen').hide();
 			jQuery('div#welcome_you').hide();
@@ -136,14 +107,13 @@
 			<td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
 		</tr>
 	</table>
+	</div>
+	<div class='menu_card_ui'>
 	<div id='menu_card'>
-	<table border='1' id='menu_card_table'>
-	<tr><th>Item Name: </th><th>Price</th><tr>
-	</table>
-
 	</div>
 	</div>
-		<div class='foot'>
+	
+	<div class='foot'>
 		<div id='foot_back'>
 			<hr id='foot_hr'>
 			<p id='about_us'><b>About Us</b></p>
@@ -190,7 +160,7 @@
 		return false;
 		});
 	</script>
-		<script>
+	<script>
 		jQuery('p#sign').on('touchend click', function()
 		{				
 			jQuery('div#login_page').hide(1000,function(){});
@@ -285,34 +255,49 @@
 	jQuery('input').on('blur',function(){jQuery('.foot').show();});
 	</script>
 	<script>
-	jQuery('.head_main').on('click touchend',function(){
-	load_mainui();
-	});
 	jQuery('#menu_button1').on('click touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
 		retrive_menu_info();
 		jQuery('#menu_card').show();
 	});
+	jQuery('.head_main').on('click touchend',function(){
+	load_mainui();
+	});
 	</script>
+	
 	<script>
-	initial();
 	function login_fun(data,username){
 	if(data=="T")
 	{
 		load_mainui();
-		jQuery('#name_display_foot').text('Welcome! '+ username);
-	}else if(data=="F"){
-		alert("Incorrect Passord");}
+		var XYZ="Uname="+username;
+		jQuery.ajax({
+						type: "POST",
+						url:"http://www.squareonefeedback.com/Scripts/R_Fname.php",
+						data: XYZ,
+						crossDomain: true,
+						cache: false,
+						success: function(dataX)
+						{	
+							jQuery('#name_display_foot').text('Welcome! '+dataX);
+						},
+						failure:function(){}
+					});
+	}else if(data=="F"){alert("Incorrect Passord");}
 	}
+	
+	</script>
+	<script>
 	function retrive_menu_info()
 	{	
 		jQuery('#menu_card_table').html("<tr><th>Item Name: </th><th>Price</th><tr>");
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#main_foot_li_R').show();
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
+			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
-				jQuery('#menu_card_table').append("<tr class='menu_item_click' name='"+field.item_id+"'><td>"+field.item_name+"</td><td>Rs."+field.price+"</td></tr>");
+			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/12.jpg'></div><div class='card-stacked'><div class='card-content'><a><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a href=''>Give Feedback</a></div></div></div>");
 			});
      		}); 
 	}
@@ -330,14 +315,13 @@
 	jQuery('#menu_card').hide();
 	jQuery('#nav_buttons').hide();
 	jQuery('#foot_buttons').hide();
-	
 	}
 	function load_mainui(){
 	jQuery('.head_main').show();
 	jQuery('#main_ui').show();
 	jQuery('#menu_card').hide();
 	jQuery('div#login_page').hide();
-	jQuery('body').css('background' , ' #000 url(img/main_ui.png) no-repeat center');
+	jQuery('body').css('background' , ' #000 url(img/main_ui.png) repeat center');
 	jQuery('.foot').hide(100,function(){});
 	jQuery('.foot_main').show(100,function(){});
 	jQuery('#nav_buttons').show();
@@ -348,6 +332,7 @@
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
+		initial();
     </script>
 </body>
 </html>
