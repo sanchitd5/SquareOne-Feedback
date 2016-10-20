@@ -297,7 +297,7 @@
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
 			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
-			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/12.jpg'></div><div class='card-stacked'><div class='card-content'><a><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a href=''>Give Feedback</a></div></div></div>");
+			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a href=''>Give Feedback</a></div></div></div>");
 			});
      		}); 
 	}
