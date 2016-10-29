@@ -109,8 +109,8 @@
 	</table>
 	</div>
 	<div class='menu_card_ui'>
-	<div id='menu_card'>
-	</div>
+	<div id='menu_card'></div>
+	<div id='feedbackUI'></div>
 	</div>
 	
 	<div class='foot'>
@@ -291,19 +291,52 @@
 	<script>
 	function retrive_menu_info()
 	{	
-		jQuery('#menu_card_table').html("<tr><th>Item Name: </th><th>Price</th><tr>");
 		jQuery('#main_foot_li_About_US').hide();
-		jQuery('#main_foot_li_R').show();
+		jQuery('#menu_card').html('');
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
 			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
-			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a href=''>Give Feedback</a></div></div></div>");
+			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
+			});
+			jQuery('.givefeedback').bind('click touchend',function(event){
+					var item_id=jQuery(this).attr('name');
+					var itemID="item_id="+item_id;
+					jQuery('#menu_card').hide();
+					jQuery.ajax({
+						type: "POST",
+						url:'http://www.squareonefeedback.com/Scripts/item_detail_retrieve.php',
+						data: itemID,
+						crossDomain: true,
+						cache: false,
+						success: function(dataX)
+						{
+							var i=0;
+							var temp=[];
+							for(i=1;i<dataX.length-1;i++)
+							{
+							temp[i-1]=dataX[i];
+							}		  			
+							var tempX=temp.join('');
+							var new_obj=JSON.parse(tempX);
+							jQuery('#feedbackUI').html("<table name='"+(new_obj.item_id)+"' class='feedback_ui_button_space' cellpadding='15%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' >"+(new_obj.item_name)+"</td></tr><tr><td class='feedback_buttons_td'>Rate the Item</td><td class='feedback_buttons_td'><select id='RFeedback'><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Bad</option></select></td></tr><tr><td class='feedback_buttons_td'>Comment</td><td class='feedback_buttons_td'><textarea id='comment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Fsubmit'><center>Submit</center></td></tr></table>");
+							jQuery('#Fsubmit').bind('click',function(){
+								var fBack_final="item_id="+jQuery('.feedback_ui_button_space').attr('name')+"&username="+Global_username+"&comment="+jQuery('#comment').val()+"&rating="+jQuery('#RFeedback').val();
+								jQuery.ajax({
+								type: "POST",
+								url: 'http://www.squareonefeedback.com/Scripts/give_feedback.php',
+								data: fBack_final,
+								crossDomain: true,
+								cache: false,
+								success: function(dataY){alert(dataY);}
+								});
+							});
+						}
+						});
+					event.preventDefault();
 			});
      		}); 
-	}
-	jQuery('menu_item_click').on('click touchend',function(){
-		var item_id=jQuery(this).attr('name');
-	});
+	</script>
+	<script>
 	function initial()
 	{
 	jQuery('div#login_page').hide();
