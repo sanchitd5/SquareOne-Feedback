@@ -364,6 +364,7 @@
 	jQuery('.foot_main').show(100,function(){});
 	jQuery('#nav_buttons').show();
 	jQuery('#foot_buttons').show();
+	init_counter_back++;
 	}
 	</script>
     <script type="text/javascript" src="cordova.js"></script>
@@ -371,9 +372,14 @@
     <script type="text/javascript">
         app.initialize();
 		initial();
-	    
 	document.addEventListener("backbutton", onBackKeyDown, false);
-	}
+	var init_counter_back=0;
+	function onBackKeyDown() {
+		if(init_counter_back==0)
+		initial();
+		else if(init_counter_back>0)
+		load_mainui();
+				}
     </script>
 </body>
 </html>
