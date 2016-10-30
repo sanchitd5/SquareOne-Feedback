@@ -111,6 +111,7 @@
 	<div class='menu_card_ui'>
 	<div id='menu_card'></div>
 	<div id='feedbackUI'></div>
+	<div id='feedbackX'></div>
 	</div>
 	
 	<div class='foot'>
@@ -291,6 +292,7 @@
 	<script>
 	function retrive_menu_info()
 	{	
+
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#menu_card').html('');
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
@@ -335,6 +337,7 @@
 					event.preventDefault();
 			});
      		}); 
+	}
 	</script>
 	<script>
 	function initial()
@@ -350,6 +353,8 @@
 	jQuery('#foot_buttons').hide();
 	}
 	function load_mainui(){
+	Query('#feedbackUI').html("");
+	jQuery('#feedbackMain').html("");
 	jQuery('.head_main').show();
 	jQuery('#main_ui').show();
 	jQuery('#menu_card').hide();
