@@ -132,7 +132,7 @@
 	</div>
 
 	<script>
-		jQuery('#main_login').on('touchend', function()
+		jQuery('#main_login').on("touchend", function()
 		{
 		var name_x=(jQuery("input:text#unme").val().toLowerCase());
 		var pass=(jQuery("input[type=password]#pass").val());
@@ -280,9 +280,9 @@
 						data: XYZ,
 						crossDomain: true,
 						cache: false,
-						success: function(dataX)
+						success: function(login_dataX)
 						{	
-							jQuery('#name_display_foot').text('Welcome! '+dataX);
+							jQuery('#name_display_foot').text('Welcome! '+login_dataX);
 						},
 						failure:function(){}
 					});
@@ -340,7 +340,7 @@
 	}
 	</script>
 	<script>
-	var counter_back=0;
+	
 	function initial()
 	{
 	jQuery('div#login_page').hide();
@@ -367,17 +367,19 @@
 	jQuery('#foot_buttons').show();
 	counter_back++;
 	}
-		document.addEventListener("backbutton", onBackKeyDown, false);
-	function onBackKeyDown(event) {
-		if(counter_back==0)
-		{initial();}
-		else if(counter_back>0)
-		{load_mainui();}
-		event.preventDefault();}
+	
 	</script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
+	var counter_back=0;
+	document.addEventListener("backbutton", onBackKeyDown, false);
+	function onBackKeyDown(eventXX) {
+		if(counter_back==0)
+		{eventXX.preventDefault();}
+		if(counter_back>0)
+		{load_mainui();}
+		}
         app.initialize();
 		initial();
 
