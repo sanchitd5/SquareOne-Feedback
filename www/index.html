@@ -132,9 +132,9 @@
 	</div>
 
 	<script>
-		jQuery('#main_login').on('touchend click', function()
+		jQuery('#main_login').on('touchend', function()
 		{
-		var name_x=(jQuery("input:text#unme").val());
+		var name_x=(jQuery("input:text#unme").val().toLowerCase());
 		var pass=(jQuery("input[type=password]#pass").val());
 		var data_login="name="+name_x+"&password="+pass;
 		if(name_x==''&&pass=='')
@@ -162,7 +162,7 @@
 		});
 	</script>
 	<script>
-		jQuery('p#sign').on('touchend click', function()
+		jQuery('p#sign').on('touchend', function()
 		{				
 			jQuery('div#login_page').hide(1000,function(){});
 			jQuery('div#sign_page').show(1000,function(){});
@@ -170,7 +170,7 @@
 		});
 	</script>
 	<script>		
-	jQuery('button#b_signup').on('touchend click', function()
+	jQuery('button#b_signup').on('touchend', function()
 	{
 		var Xname=(jQuery('#name').val());
 		var Xuname=(jQuery('#sign_name').val());
@@ -222,33 +222,34 @@
 	});
 	</script>
 	<script>
-		jQuery('p#forget_password').on("touchend click", function()
+		jQuery('p#forget_password').on("touchend", function()
 		{
 			alert('Contact us at support@squareonefeedback.com');
 		});
 	
 	</script>
 	<script>
-		jQuery('button#b_signupcancel').on("touchend click", function()
+		jQuery('button#b_signupcancel').on("touchend", function()
 		{
 			jQuery('div#sign_page').hide(1000,function(){});
 			jQuery('div#login_page').show(1000,function(){});
 		});
 	</script>
 	<script>
-		jQuery('button#fb_login').on("touchend click", function()
+		jQuery('button#fb_login').on("touchend", function()
 		{
 			alert('Functionality Maybe Added');
 		});
-		jQuery('button#g_login').on("touchend click", function()
+		jQuery('button#g_login').on("touchend", function()
 		{
 			alert('Functionality Maybe Added');
 		});
-		jQuery('div.foot').on("touchend click", function()
+		jQuery('div.foot').on("touchend", function(event)
 		{
 			alert('Designed and Connected By Sanchit Dang (1410992149)');
 			alert('Database Handled By Navneet Khatkar (1410992136)');
 			alert('Documented By Puneet Bali (1410992195)');
+			event.stopPropagation();
 		});
 	</script>
 	<script>
@@ -256,13 +257,13 @@
 	jQuery('input').on('blur',function(){jQuery('.foot').show();});
 	</script>
 	<script>
-	jQuery('#menu_button1').on('click touchend',function(){
+	jQuery('#menu_button1').on('touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
 		retrive_menu_info();
 		jQuery('#menu_card').show();
 	});
-	jQuery('.head_main').on('click touchend',function(){
+	jQuery('.head_main').on('touchend',function(){
 	load_mainui();
 	});
 	</script>
@@ -285,14 +286,13 @@
 						},
 						failure:function(){}
 					});
-	}else if(data=="F"){alert("Incorrect Passord");}
+	}else if(data=="F"){alert("Incorrect Username/Passord");}
 	}
 	
 	</script>
 	<script>
 	function retrive_menu_info()
 	{	
-
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#menu_card').html('');
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
@@ -300,7 +300,7 @@
 			jQuery.each(result, function(i, field){
 			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
 			});
-			jQuery('.givefeedback').bind('click touchend',function(event){
+			jQuery('.givefeedback').on('touchend',function(event){
 					var item_id=jQuery(this).attr('name');
 					var itemID="item_id="+item_id;
 					jQuery('#menu_card').hide();
@@ -321,7 +321,7 @@
 							var tempX=temp.join('');
 							var new_obj=JSON.parse(tempX);
 							jQuery('#feedbackUI').html("<table name='"+(new_obj.item_id)+"' class='feedback_ui_button_space' cellpadding='15%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' >"+(new_obj.item_name)+"</td></tr><tr><td class='feedback_buttons_td'>Rate the Item</td><td class='feedback_buttons_td'><select id='RFeedback'><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Bad</option></select></td></tr><tr><td class='feedback_buttons_td'>Comment</td><td class='feedback_buttons_td'><textarea id='comment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Fsubmit'><center>Submit</center></td></tr></table>");
-							jQuery('#Fsubmit').bind('click touchend',function(){
+							jQuery('#Fsubmit').on('touchend',function(){
 								var fBack_final="item_id="+jQuery('.feedback_ui_button_space').attr('name')+"&username="+Global_username+"&comment="+jQuery('#comment').val()+"&rating="+jQuery('#RFeedback').val();
 								jQuery.ajax({
 								type: "POST",
@@ -340,6 +340,7 @@
 	}
 	</script>
 	<script>
+	var counter_back=0;
 	function initial()
 	{
 	jQuery('div#login_page').hide();
@@ -364,23 +365,22 @@
 	jQuery('.foot_main').show(100,function(){});
 	jQuery('#nav_buttons').show();
 	jQuery('#foot_buttons').show();
-	init_counter_back++;
+	counter_back++;
 	}
+		document.addEventListener("backbutton", onBackKeyDown, false);
+	function onBackKeyDown(event) {
+		if(counter_back==0)
+		{initial();}
+		else if(counter_back>0)
+		{load_mainui();}
+		event.preventDefault();}
 	</script>
     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript">
         app.initialize();
 		initial();
-	document.addEventListener("backbutton", onBackKeyDown, false);
-	var init_counter_back=0;
-	function onBackKeyDown(event) {
-		if(init_counter_back==0)
-		{initial();}
-		else if(init_counter_back>0)
-		{load_mainui();}
-		event.preventDefault();
-					}
+
     </script>
 </body>
 </html>
