@@ -374,12 +374,13 @@
 		initial();
 	document.addEventListener("backbutton", onBackKeyDown, false);
 	var init_counter_back=0;
-	function onBackKeyDown() {
+	function onBackKeyDown(event) {
 		if(init_counter_back==0)
-		initial();
+		{initial();}
 		else if(init_counter_back>0)
-		load_mainui();
-				}
+		{load_mainui();}
+		event.preventDefault();
+					}
     </script>
 </body>
 </html>
