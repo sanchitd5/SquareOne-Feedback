@@ -185,7 +185,7 @@
 					if(Xpass==Xpass2)
 					{
 						jQuery('div#X_ALERT').show(500,function(){});
-						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val())+"&email="+(jQuery('#Xmail').val())+"&password="+(jQuery("input[type=password]#s_pass").val());
+						var data_send="name="+(jQuery('#name').val())+"&username="+(jQuery('#sign_name').val().toLowerCase())+"&email="+(jQuery('#Xmail').val())+"&password="+(jQuery("input[type=password]#s_pass").val());
 						jQuery.ajax({
 						type: "POST",
 						url:'http://www.squareonefeedback.com/Scripts/signup.php',
