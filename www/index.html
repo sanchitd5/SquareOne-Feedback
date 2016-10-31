@@ -271,9 +271,11 @@
 	</script>
 	
 	<script>
+	var Global_username="";
 	function login_fun(data,username){
 	if(data=="T")
 	{
+		Global_username=username;
 		load_mainui();
 		var XYZ="Uname="+username;
 		jQuery('#name_display_foot').text('Welcome! '+usersname(username));
