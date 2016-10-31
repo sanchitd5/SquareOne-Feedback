@@ -331,6 +331,16 @@
 	}
 	</script>
 	<script>
+	function RATING(rate)
+	{
+		switch(rate)
+		{
+		case '1':return "Bad";
+		case '2':return "Average";
+		case '3':return "Excellent";
+		default:return "Nothing";
+		}
+	}
 	function usersname(uname)
 	{
 	var temp_name='';
