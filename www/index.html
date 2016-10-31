@@ -313,6 +313,9 @@
 							var new_obj=JSON.parse(tempX);
 							jQuery('#feedbackUI').html("<table name='"+(new_obj.item_id)+"' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' >"+(new_obj.item_name)+"</td></tr><tr><td class='feedback_buttons_td'>Rate the Item</td><td class='feedback_buttons_td'><div input-field><select id='RFeedback'><option value='' disabled selected>Choose your option</option><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Bad</option></select></div></td></tr><tr><td class='feedback_buttons_td'>Comment</td><td class='feedback_buttons_td comment'><textarea class='materialize-textarea' id='comment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Fsubmit'><center>Submit</center></td></tr></table>");
 							jQuery('#Fsubmit').on('touchend',function(){
+								if((jQuery('#RFeedback').val()==null))
+								{alert("Please Select A Rating");}
+								else{
 								var fBack_final="item_id="+jQuery('.feedback_ui_button_space').attr('name')+"&username="+Global_username+"&comment="+jQuery('#comment').val()+"&rating="+jQuery('#RFeedback').val();
 								jQuery.ajax({
 								type: "POST",
@@ -320,8 +323,11 @@
 								data: fBack_final,
 								crossDomain: true,
 								cache: false,
-								success: function(dataY){alert(dataY);}
+								success: function(dataY){
+								alert(dataY);
+								load_comm(item_id);}
 								});
+								}
 							});
 						}
 						});
