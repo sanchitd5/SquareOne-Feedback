@@ -392,20 +392,81 @@ div#foot_back
   z-index:65165686516516168;
 }
 .feedback_ui_button_space{
-	
+
 	position:relative;
 	width:100%;
-	border-spacing: 15px;
+	border-spacing: 4px;
     border-collapse: separate;
+	margin-bottom:-15px;
 }
 .feedback_buttons_td{
 	background:rgba(255,255,255,.7); 
 	box-shadow: 5px 1px 5px rgba(0,0,0,.1);
 	color:black;
+	font: normal 20px 'Oswald', sans-serif;
 }
 .feedback_buttons_td:hover{
 	background:rgba(255,255,255,.8); 
 }
 .feedback_buttons_td:active{
 	background:rgba(255,255,255,1); 
+}
+.feedback_return_button_space{
+	background:rgba(255,255,255,.5);
+	position:relative;
+	width:100%;
+	border-spacing: 5px;
+    border-collapse: separate;
+	margin-bottom:-20px;
+}
+.feedback_return_td{
+	background:rgba(255,255,255,.7); 
+	box-shadow: 5px 1px 5px rgba(0,0,0,.1);
+	color:black;
+}
+.feedback_return_td:hover{
+	background:rgba(255,255,255,.8); 
+}
+.feedback_return_td:active{
+	background:rgba(255,255,255,1); 
+}
+.comment{
+	font: normal 20px 'Dancing Script', cursive;
+}
+select {
+  font-family: inherit;
+  background-color: transparent;
+  width: 100%;
+  padding: $select-padding 0;
+  font-size: $select-font-size;
+  color: $select-color;
+  border: none;
+  border-bottom: 1px solid $select-border-color;
+}
+
+/* Remove focus */
+select:focus {
+  outline: none}
+
+/* Hide label */
+.mdl-selectfield label {display: none;}
+/* Use custom arrow */
+.mdl-selectfield select {appearance: none}
+.mdl-selectfield {
+  font-family: 'Roboto','Helvetica','Arial',sans-serif;
+  position: relative;
+    &:after {
+        position: absolute;
+        top: 0.75em;
+        right: 0.5em;
+        /* Styling the down arrow */
+        width: 0;
+        height: 0;
+        padding: 0;
+        content: '';
+        border-left: .25em solid transparent;
+        border-right: .25em solid transparent;
+        border-top: .375em solid $select-border-color;
+        pointer-events: none;
+    }
 }
