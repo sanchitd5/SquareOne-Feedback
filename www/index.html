@@ -274,18 +274,7 @@
 	{
 		load_mainui();
 		var XYZ="Uname="+username;
-		jQuery.ajax({
-						type: "POST",
-						url:"http://www.squareonefeedback.com/Scripts/R_Fname.php",
-						data: XYZ,
-						crossDomain: true,
-						cache: false,
-						success: function(login_dataX)
-						{	
-							jQuery('#name_display_foot').text('Welcome! '+login_dataX);
-						},
-						failure:function(){}
-					});
+		jQuery('#name_display_foot').text('Welcome! '+usersname(username));
 	}else if(data=="F"){alert("Incorrect Username/Passord");}
 	}
 	
@@ -340,7 +329,28 @@
 	}
 	</script>
 	<script>
-	
+	function usersname(uname)
+	{
+	var temp_name='';
+	var XYZ="Uname="+uname;
+		jQuery.ajax({
+				type: "POST",
+				url:"http://www.squareonefeedback.com/Scripts/R_Fname.php",
+				data: XYZ,
+				crossDomain: true,
+				cache: false,
+				async: false,
+				success: function(dataZ)
+				{	
+					temp_name=dataZ;
+					
+				},
+				failure:function(){}
+			});
+			if(temp_name!=undefined&&temp_name!="")
+		return temp_name;
+		
+	}
 	function initial()
 	{
 	jQuery('div#login_page').hide();
