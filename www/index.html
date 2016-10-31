@@ -331,6 +331,19 @@
 	}
 	</script>
 	<script>
+	function load_comm(item_id)
+	{
+		jQuery("div#FEEDBACKMAIN").html("");
+		var dataITEM="item_id="+item_id;
+		jQuery.post("http://www.squareonefeedback.com/Scripts/take_feedback.php",dataITEM,function(feedback_R){		
+			jQuery.each(feedback_R,function(i,temp_feedback_R){
+				if(temp_feedback_R.comment=="")
+				jQuery("div#FEEDBACKMAIN").append("<table class='feedback_return_button_space' cellpadding='15%'><tr><th style'align:left;' colspan='2' class='feedback_buttons_td'>User : "+usersname(temp_feedback_R.username)+"</th></tr><tr><td class='feedback_buttons_td'>Rated:</td><td class='feedback_buttons_td'>"+RATING(temp_feedback_R.rating)+"</td></tr><br><br></table>");
+				else
+				jQuery("div#FEEDBACKMAIN").append("<table class='feedback_return_button_space' cellpadding='15%'><tr><th style'align:left;' colspan='2' class='feedback_buttons_td'>User : "+usersname(temp_feedback_R.username)+"</th></tr><tr><td class='feedback_buttons_td'>Rated:</td><td class='feedback_buttons_td'>"+RATING(temp_feedback_R.rating)+"</td></tr><tr><td class='feedback_buttons_td'>Commented:</td><td class='feedback_buttons_td comment'>"+temp_feedback_R.comment+"</td></tr><br><br></table>");
+			});
+		},'json');
+	}
 	function RATING(rate)
 	{
 		switch(rate)
