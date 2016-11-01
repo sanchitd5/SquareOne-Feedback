@@ -103,7 +103,7 @@
 			<td class='main_buttons_td' id='menu_button1' colspan='2' ><center><img height='110px' width='110px' src='img/menu.png'></center></td>
 		</tr>
 		<tr>
-			<td class='main_buttons_td' colspan='2'><center><img height='110px' width='110px' src='img/feedback.png'></center></td>
+			<td class='main_buttons_td' id='menu_button2' colspan='2'><center><img height='110px' width='110px' src='img/suggestion.png'></center></td>
 		</tr>
 		<tr>
 			<td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
@@ -268,6 +268,12 @@
 	jQuery('.head_main').on('touchend',function(){
 	load_mainui();
 	});
+	jQuery('#menu_button2').on('click touchend',function(){
+		jQuery('.foot_main').hide();
+		jQuery('#nav_buttons').hide();
+		suggestion();
+		jQuery('#menu_card').show();
+	});
 	</script>
 	
 	<script>
@@ -281,9 +287,31 @@
 		jQuery('#name_display_foot').text('Welcome! '+usersname(username));
 	}else if(data=="F"){alert("Incorrect Username/Passord");}
 	}
-	
 	</script>
 	<script>
+	function suggestion()
+	{
+		jQuery('#main_foot_li_About_US').hide();
+		jQuery('#menu_card').html('');
+		jQuery('#menu_card').hide();
+		jQuery('#feedbackUI').html("<table name='suggestion' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' ><strong>"+usersname(Global_username)+"</strong></td></tr><tr><td class='feedback_buttons_td'>Suggestion</td><td class='feedback_buttons_td suggestion'><textarea class='materialize-textarea' id='suggestion'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Ssubmit'><center>Submit</center></td></tr></table>");
+		jQuery('#Ssubmit').on('click',function(){
+								if((jQuery('#suggestion').val()==""))
+								{alert("Please Enter a suggestion");}
+								else{
+								var suggestion_final="username="+Global_username+"&suggestion="+jQuery('#suggestion').val();
+								jQuery.ajax({
+								type: "POST",
+								url: 'http://www.squareonefeedback.com/Scripts/suggestion.php',
+								data: suggestion_final,
+								crossDomain: true,
+								cache: false,
+								success: function(dataS){
+								alert(dataS);}
+								});
+								}
+							});
+	}
 	function retrive_menu_info()
 	{	
 		jQuery('#main_foot_li_About_US').hide();
