@@ -162,16 +162,12 @@
 			});}
 		return false;
 		});
-	</script>
-	<script>
 		jQuery('p#sign').on('touchend', function()
 		{				
 			jQuery('div#login_page').hide(1000,function(){});
 			jQuery('div#sign_page').show(1000,function(){});
 			jQuery('input:text.signup_input').val('');
-		});
-	</script>
-	<script>		
+		});		
 	jQuery('button#b_signup').on('touchend', function()
 	{
 		var Xname=(jQuery('#name').val());
@@ -222,22 +218,15 @@
 		}else{jQuery('div#X_ALERT').show(500,function(){jQuery('#statusX').text("Please Enter Full Details");});}
 		return false;
 	});
-	</script>
-	<script>
 		jQuery('p#forget_password').on("touchend", function()
 		{
 			alert('Contact us at support@squareonefeedback.com');
 		});
-	
-	</script>
-	<script>
 		jQuery('button#b_signupcancel').on("touchend", function()
 		{
 			jQuery('div#sign_page').hide(1000,function(){});
 			jQuery('div#login_page').show(1000,function(){});
 		});
-	</script>
-	<script>
 		jQuery('button#fb_login').on("touchend", function()
 		{
 			alert('Functionality Maybe Added');
@@ -253,12 +242,8 @@
 			alert('Documented By Puneet Bali (1410992195)');
 			event.stopPropagation();
 		});
-	</script>
-	<script>
 	jQuery('input').on('focus',function(){jQuery('.foot').hide();});	
 	jQuery('input').on('blur',function(){jQuery('.foot').show();});
-	</script>
-	<script>
 	jQuery('#menu_button1').on('touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
@@ -274,9 +259,6 @@
 		suggestion();
 		jQuery('#menu_card').show();
 	});
-	</script>
-	
-	<script>
 	var Global_username="";
 	function login_fun(data,username){
 	if(data=="T")
@@ -287,15 +269,13 @@
 		jQuery('#name_display_foot').text('Welcome! '+usersname(username));
 	}else if(data=="F"){alert("Incorrect Username/Passord");}
 	}
-	</script>
-	<script>
 	function suggestion()
 	{
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#menu_card').html('');
 		jQuery('#menu_card').hide();
 		jQuery('#feedbackUI').html("<table name='suggestion' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' ><strong>"+usersname(Global_username)+"</strong></td></tr><tr><td class='feedback_buttons_td'>Suggestion</td><td class='feedback_buttons_td suggestion'><textarea class='materialize-textarea' id='suggestion'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Ssubmit'><center>Submit</center></td></tr></table>");
-		jQuery('#Ssubmit').on('click',function(){
+		jQuery('#Ssubmit').on('touchend',function(){
 								if((jQuery('#suggestion').val()==""))
 								{alert("Please Enter a suggestion");}
 								else{
@@ -365,8 +345,6 @@
 			});
      		}); 
 	}
-	</script>
-	<script>
 	function load_comm(item_id)
 	{
 		jQuery("div#FEEDBACKMAIN").html("");
