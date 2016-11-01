@@ -433,6 +433,9 @@ div#foot_back
 .comment{
 	font: normal 20px 'Dancing Script', cursive;
 }
+.suggestion{
+	font: normal 20px 'Roboto Condensed';
+}
 select {
   font-family: inherit;
   background-color: transparent;
