@@ -106,7 +106,7 @@
 			<td class='main_buttons_td' id='menu_button2' colspan='2'><center><img height='110px' width='110px' src='img/suggestion.png'></center></td>
 		</tr>
 		<tr>
-			<td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
+			<td class='main_buttons_td' id='menu_button3'><center><img height='110px' width='110px' src='img/complaint.png'></center></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
 		</tr>
 	</table>
 	</div>
@@ -258,6 +258,11 @@
 		jQuery('#nav_buttons').hide();
 		suggestion();
 		jQuery('#menu_card').show();
+	});
+	jQuery('#menu_button3').on('click touchend',function(){
+		jQuery('.foot_main').hide();
+		jQuery('#nav_buttons').hide();
+		complaint();
 	});
 	var Global_username="";
 	function login_fun(data,username){
