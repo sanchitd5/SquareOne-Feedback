@@ -330,7 +330,7 @@
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
 			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
-			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
+			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"<br>Average Rating:"+rate_average(field.item_id)+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
 			});
 			jQuery('.givefeedback').on('touchend',function(event){
 					var item_id=jQuery(this).attr('name');
@@ -398,6 +398,27 @@
 		case '3':return "Above Average";
 		default:return "Nothing";
 		}
+	}
+	function rate_average(item_id)
+	{
+	var temp_R="";
+	var dataITEMID="item_id="+item_id;
+	jQuery.ajax({
+						type: "POST",
+						url:"http://www.squareonefeedback.com/Scripts/average_rating.php",
+						data: dataITEMID,
+						crossDomain: true,
+						cache: false,
+						async: false,
+						success: function(dataR)
+						{	
+							temp_R=dataR;						
+						},
+						failure:function(){}
+					});
+					if(temp_R!=undefined&&temp_R!="")
+					{return temp_R;}
+					
 	}
 	function usersname(uname)
 	{
