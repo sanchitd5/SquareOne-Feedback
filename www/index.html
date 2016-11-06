@@ -106,7 +106,7 @@
 			<td class='main_buttons_td' id='menu_button2' colspan='2'><center><img height='110px' width='110px' src='img/suggestion.png'></center></td>
 		</tr>
 		<tr>
-			<td class='main_buttons_td' id='menu_button3'><center><img height='110px' width='110px' src='img/complaint.png'></center></td> <td class='main_buttons_td'><img height='110px' width='110px' src='img/menu.png'></td>
+			<td class='main_buttons_td' id='menu_button3'><center><img height='110px' width='110px' src='img/complaint.png'></center></td> <td class='main_buttons_td' id='menu_button4'><img height='110px' width='110px' src='img/app_rate.png'></td>
 		</tr>
 	</table>
 	</div>
@@ -253,16 +253,19 @@
 	jQuery('.head_main').on('touchend',function(){
 	load_mainui();
 	});
-	jQuery('#menu_button2').on('click touchend',function(){
+	jQuery('#menu_button2').on('touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
 		suggestion();
 		jQuery('#menu_card').show();
 	});
-	jQuery('#menu_button3').on('click touchend',function(){
+	jQuery('#menu_button3').on('touchend',function(){
 		jQuery('.foot_main').hide();
 		jQuery('#nav_buttons').hide();
 		complaint();
+	});
+	jQuery('#menu_button4').on('touchend',function(){
+		alert("To be Added");
 	});
 	var Global_username="";
 	function login_fun(data,username){
