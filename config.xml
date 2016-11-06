@@ -3,7 +3,7 @@
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.squareonefeedback.sanchitd5"
 		versionCode=""
-		version   = "0.4.7.0 alpha">
+		version   = "0.5.0 alpha">
 		<name>SquareOne</name>
 		<description>
 		SquareOne Feedback App
