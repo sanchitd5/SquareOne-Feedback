@@ -326,7 +326,7 @@
 	function retrive_menu_info()
 	{	
 		jQuery('#main_foot_li_About_US').hide();
-		jQuery('#menu_card').html("<h2>Loading</h2> <img src='img/loading.gif'>");
+		jQuery('#menu_card').html("<center><h1>Loading</h1> <img src='img/loading.gif'></center>");
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
 			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
