@@ -261,13 +261,36 @@
 	});
 	var Global_username="";
 	function login_fun(data,username){
-	if(data=="T")
+		if(data=="T")
+		{
+			Global_username=username;
+			load_mainui();
+			var XYZ="Uname="+username;
+			jQuery('#name_display_foot').text('Welcome! '+usersname(username));
+		}else if(data=="F"){alert("Incorrect Username/Passord");}
+	}
+	function complaint()
 	{
-		Global_username=username;
-		load_mainui();
-		var XYZ="Uname="+username;
-		jQuery('#name_display_foot').text('Welcome! '+usersname(username));
-	}else if(data=="F"){alert("Incorrect Username/Passord");}
+		jQuery('#main_foot_li_About_US').hide();
+		jQuery('#menu_card').html('');
+		jQuery('#menu_card').hide();
+		jQuery('#feedbackUI').html("<table name='complaint' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' ><strong>"+usersname(Global_username)+"</strong></td></tr><tr><td class='feedback_buttons_td'>Complaint</td><td class='feedback_buttons_td suggestion'><textarea class='materialize-textarea' id='complaint'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Csubmit'><center>Submit</center></td></tr></table>");
+		jQuery('#Csubmit').on('click',function(){
+								if((jQuery('#complaint').val()==""))
+								{alert("Oh! No Complaints :)");}
+								else{
+								var complaint_final="username="+Global_username+"&complaint="+jQuery('#complaint').val();
+								jQuery.ajax({
+								type: "POST",
+								url: 'http://www.squareonefeedback.com/Scripts/complaint.php',
+								data: complaint_final,
+								crossDomain: true,
+								cache: false,
+								success: function(dataS){
+								alert(dataS);}
+								});
+								}
+							});
 	}
 	function suggestion()
 	{
