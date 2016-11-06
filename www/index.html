@@ -415,8 +415,7 @@
 						success: function(dataR)
 						{	
 							temp_R=dataR;						
-						},
-						failure:function(){}
+						}
 					});
 					if(temp_R!=undefined&&temp_R!="")
 					{return temp_R;}
@@ -448,7 +447,7 @@
 	{
 	jQuery('#feedbackUI').html("<table class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' >"+usersname(Global_username)+"</td></tr><tr><td class='feedback_buttons_td'>Your Rating</td><td class='feedback_buttons_td'><select id='ARating'><option value='' disabled selected>Choose your option</option><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Below Average</option></select></td></tr><tr><td class='feedback_buttons_td'>Your Feedback</td><td class='feedback_buttons_td comment'><textarea class='materialize-textarea' id='AFcomment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='AFsubmit'><center>Submit</center></td></tr></table>");
 		jQuery('#AFsubmit').bind('click',function(){
-			if((jQuery('#AFeedback').val()==null))
+			if((jQuery('#ARating').val()==null))
 						{alert("Please Select A Rating");}
 						else{
 						var AfBack_final="&username="+Global_username+"&app_feedback="+jQuery('#AFcomment').val()+"&rating="+jQuery('#ARating').val();
