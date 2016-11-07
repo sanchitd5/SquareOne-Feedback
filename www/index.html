@@ -481,12 +481,11 @@
 	jQuery('#feedbackUI').html("");
 	jQuery('div#FEEDBACKMAIN').html("");
 	jQuery('.head_main').show();
-	jQuery('.foot').hide();
+	jQuery('.foot').remove();
 	jQuery('#main_ui').show();
 	jQuery('#menu_card').hide();
 	jQuery('div#login_page').hide();
 	jQuery('body').css('background' , ' #000 url(img/main_ui.png) repeat center');
-	jQuery('.foot').hide(100,function(){});
 	jQuery('.foot_main').show(100,function(){});
 	jQuery('#nav_buttons').show();
 	jQuery('#foot_buttons').show();
