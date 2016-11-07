@@ -3,7 +3,7 @@
 		xmlns:gap = "http://phonegap.com/ns/1.0"
 		id        = "com.squareonefeedback.sanchitd5"
 		versionCode=""
-		version   = "1.0.0 beta">
+		version   = "1.0.1 alpha">
 		<name>SquareOne</name>
 		<description>
 		SquareOne Feedback App
@@ -14,7 +14,7 @@
 		<author href="" email="sanchitd5@live.com">
 		Sanchit Dang
 		</author>
-<name>SquareOne Feedback - Beta</name>
+<name>SquareOne Feedback - Aplha</name>
 <content src="index.html"/>
   <preference name="DisallowOverscroll" value="true"/>
   <preference name="android-minSdkVersion" value="14"/>
