@@ -50,7 +50,7 @@
 			{
 			opacity:0.8,
 			},1000,function(){});
-	jQuery('div#welcome_b').on('touchend click', function()
+	jQuery('div#welcome_b').on('touchend', function()
 		{
 			jQuery('div#welcome_screen').hide();
 			jQuery('div#welcome_you').hide();
@@ -330,12 +330,12 @@
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#menu_card').html("<center><h1>Loading</h1> <img src='img/loading.gif'></center>");
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
-			var tempELEMENT="";
-			jQuery.each(result, function(i, field){
-			tempELEMENT=tempELEMENT+"<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"<br>Average Rating:"+rate_average(field.item_id)+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>";
-			});
 			jQuery('#menu_card').html('');
-			jQuery('#menu_card').append(tempELEMENT);
+			var menu_i=0;
+			for(menu_i=0;i<result.length;i++)
+			{
+				jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+result[i].item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+result[i].item_name+"</strong><br>Price:"+result[i].price+"<br>Average Rating:"+rate_average(result[i].item_id)+"</a></div><div class='card-action'><a name='"+result[i].item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");	
+			}
 			jQuery('.givefeedback').on('touchend',function(event){
 					var item_id=jQuery(this).attr('name');
 					var itemID="item_id="+item_id;
