@@ -345,7 +345,7 @@
 						url:'http://www.squareonefeedback.com/Scripts/item_detail_retrieve.php',
 						data: itemID,
 						crossDomain: true,
-						cache: false,
+						cache: true,
 						success: function(dataX)
 						{
 							var i=0;
@@ -367,7 +367,7 @@
 								url: 'http://www.squareonefeedback.com/Scripts/give_feedback.php',
 								data: fBack_final,
 								crossDomain: true,
-								cache: false,
+								cache: true,
 								success: function(dataY){
 								alert(dataY);
 								load_comm(item_id);}
