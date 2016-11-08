@@ -229,11 +229,11 @@
 		});
 		jQuery('button#fb_login').on("touchend", function()
 		{
-			alert('Functionality Maybe Added');
+			alert('Functionality Maybe Added. Use normal SignUp till then.');
 		});
 		jQuery('button#g_login').on("touchend", function()
 		{
-			alert('Functionality Maybe Added');
+			alert('Functionality Maybe Added. Use normal SignUp till then.');
 		});
 		jQuery('div.foot,#main_foot_li_AboutUS').on("touchend", function(event)
 		{
@@ -289,16 +289,21 @@
 								if((jQuery('#complaint').val()==""))
 								{alert("Oh! No Complaints :)");}
 								else{
-								var complaint_final="username="+Global_username+"&complaint="+jQuery('#complaint').val();
-								jQuery.ajax({
-								type: "POST",
-								url: 'http://www.squareonefeedback.com/Scripts/complaint.php',
-								data: complaint_final,
-								crossDomain: true,
-								cache: false,
-								success: function(dataS){
-								alert(dataS);}
-								});
+									if(jQuery('#complaint').val().length>=140)
+								{
+									var complaint_final="username="+Global_username+"&complaint="+jQuery('#complaint').val();
+									jQuery.ajax({
+									type: "POST",
+									url: 'http://www.squareonefeedback.com/Scripts/complaint.php',
+									data: complaint_final,
+									crossDomain: true,
+									cache: false,
+									success: function(dataS){
+									alert(dataS);}
+									});
+									}
+									else
+									{alert("Complaint more than 140 characters.");}
 								}
 							});
 	}
