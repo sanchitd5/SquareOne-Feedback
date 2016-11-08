@@ -386,6 +386,7 @@
 	}
 	function load_comm(item_id)
 	{
+		jQuery("div#FEEDBACKMAIN").html('');
 		var dataITEM="item_id="+item_id;
 		jQuery.post("http://www.squareonefeedback.com/Scripts/take_feedback.php",dataITEM,function(feedback_R){
 			jQuery.each(feedback_R,function(i,temp_feedback_R){
