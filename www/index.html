@@ -330,59 +330,58 @@
 									}else{alert("Complaint more than 140 characters.");}
 								}else{alert("Please Enter a suggestion");}
 							});
-	}
-	function retrive_menu_info()
+	}	function retrive_menu_info()
 	{	
 		jQuery('#main_foot_li_About_US').hide();
 		jQuery('#menu_card').html("<center><h1>Loading</h1> <img src='img/loading.gif'></center>");
 		jQuery.getJSON("http://squareonefeedback.com/Scripts/menu_retrieve.php",function(result){
 			jQuery('#menu_card').html('');
 			jQuery.each(result, function(i, field){
-			jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"<br>Average Rating:"+rate_average(field.item_id)+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
+				jQuery('#menu_card').append("<div class='card horizontal'><div class='card-image'><img src='img/food/"+field.item_id+".jpg'></div><div class='card-stacked'><div class='card-content'><a name='item_name_menu_card'><strong>"+field.item_name+"</strong><br>Price:"+field.price+"</a></div><div class='card-action'><a name='"+field.item_id+"' class='givefeedback'>Give Feedback</a></div></div></div>");
 			});
 			jQuery('.givefeedback').on('touchend',function(event){
 					var item_id=jQuery(this).attr('name');
 					var itemID="item_id="+item_id;
 					jQuery('#menu_card').hide();
 					jQuery.ajax({
-						type: "POST",
-						url:'http://www.squareonefeedback.com/Scripts/item_detail_retrieve.php',
-						data: itemID,
-						crossDomain: true,
-						cache: false,
-						success: function(dataX)
-						{
-							var i=0;
-							var temp=[];
-							for(i=1;i<dataX.length-1;i++)
+							type: "POST",
+							url:'http://www.squareonefeedback.com/Scripts/item_detail_retrieve.php',
+							data: itemID,
+							crossDomain: true,
+							cache: false,
+							success: function(dataX)
 							{
-							temp[i-1]=dataX[i];
-							}		  			
-							var tempX=temp.join('');
-							var new_obj=JSON.parse(tempX);
-							jQuery('#feedbackUI').html("<table name='"+(new_obj.item_id)+"' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' >"+(new_obj.item_name)+"</td></tr><tr><td class='feedback_buttons_td'>Rate the Item</td><td class='feedback_buttons_td'><div input-field><select id='RFeedback'><option value='' disabled selected>Choose your option</option><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Bad</option></select></div></td></tr><tr><td class='feedback_buttons_td'>Comment</td><td class='feedback_buttons_td comment'><textarea class='materialize-textarea' id='comment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Fsubmit'><center>Submit</center></td></tr></table>");
-							jQuery('#Fsubmit').on('touchend',function(){
-								if((jQuery('#RFeedback').val()==null))
-								{alert("Please Select A Rating");}
-								else{
-								var fBack_final="item_id="+jQuery('.feedback_ui_button_space').attr('name')+"&username="+Global_username+"&comment="+jQuery('#comment').val()+"&rating="+jQuery('#RFeedback').val();
-								jQuery.ajax({
-								type: "POST",
-								url: 'http://www.squareonefeedback.com/Scripts/give_feedback.php',
-								data: fBack_final,
-								crossDomain: true,
-								cache: false,
-								success: function(dataY){
-								alert(dataY);
-								load_comm(item_id);}
+								var i=0;
+								var temp=[];
+								for(i=1;i<dataX.length-1;i++)
+								{
+								temp[i-1]=dataX[i];
+								}		  			
+								var tempX=temp.join('');
+								var new_obj=JSON.parse(tempX);
+								jQuery('#feedbackUI').html("<table name='"+(new_obj.item_id)+"' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td'>"+(new_obj.item_name)+"</td></tr><tr><td class='feedback_buttons_td'>Average Rating:</td><td class='feedback_buttons_td' >"+(rate_average(new_obj.item_id))+"</td></tr><tr><td class='feedback_buttons_td'>Rate the Item</td><td class='feedback_buttons_td'><div input-field><select id='RFeedback'><option value='' disabled selected>Choose your option</option><option value='3'>Excellent</option><option value='2'>Average</option><option value='1'>Bad</option></select></div></td></tr><tr><td class='feedback_buttons_td'>Comment</td><td class='feedback_buttons_td comment'><textarea class='materialize-textarea' id='comment'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Fsubmit'><center>Submit</center></td></tr></table>");
+								jQuery('#Fsubmit').on('touchend',function(){
+									if((jQuery('#RFeedback').val()==null))
+									{alert("Please Select A Rating");}
+									else{
+									var fBack_final="item_id="+jQuery('.feedback_ui_button_space').attr('name')+"&username="+Global_username+"&comment="+jQuery('#comment').val()+"&rating="+jQuery('#RFeedback').val();
+									jQuery.ajax({
+											type: "POST",
+											url: 'http://www.squareonefeedback.com/Scripts/give_feedback.php',
+											data: fBack_final,
+											crossDomain: true,
+											cache: false,
+											success: function(dataY){
+											alert(dataY);
+											load_comm(item_id);}
+										});
+									}
 								});
-								}
-							});
-						load_comm(item_id);}
+							load_comm(item_id);}
 						});
 					event.preventDefault();
 			});
-     		}); 
+   		}); 
 	}
 	function load_comm(item_id)
 	{
