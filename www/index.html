@@ -315,7 +315,10 @@
 		jQuery('#feedbackUI').html("<table name='suggestion' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' ><strong>"+usersname(Global_username)+"</strong></td></tr><tr><td class='feedback_buttons_td'>Suggestion</td><td class='feedback_buttons_td suggestion'><textarea class='materialize-textarea' id='suggestion'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Ssubmit'><center>Submit</center></td></tr></table>");
 		jQuery('#Ssubmit').on('touchend',function(){
 								if((jQuery('#suggestion').val()==""))
-								{alert("Please Enter a suggestion");}
+								{
+									if(jQuery('#suggestion').val().length>=140)
+								{
+								alert("Please Enter a suggestion");}
 								else{
 								var suggestion_final="username="+Global_username+"&suggestion="+jQuery('#suggestion').val();
 								jQuery.ajax({
@@ -327,6 +330,7 @@
 								success: function(dataS){
 								alert(dataS);}
 								});
+								}else{alert(""Complaint more than 140 characters."");}
 								}
 							});
 	}
