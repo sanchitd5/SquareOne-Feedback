@@ -287,24 +287,23 @@
 		jQuery('#feedbackUI').html("<table name='complaint' class='feedback_ui_button_space' cellpadding='10%'><tr><td class='feedback_buttons_td'>Name</td><td class='feedback_buttons_td' ><strong>"+usersname(Global_username)+"</strong></td></tr><tr><td class='feedback_buttons_td'>Complaint</td><td class='feedback_buttons_td suggestion'><textarea class='materialize-textarea' id='complaint'></textarea></td></tr><tr><td class='feedback_buttons_td' colspan='2' id='Csubmit'><center>Submit</center></td></tr></table>");
 		jQuery('#Csubmit').on('click',function(){
 								if((jQuery('#complaint').val()==""))
-								{alert("Oh! No Complaints :)");}
-								else{
-									if(jQuery('#complaint').val().length>=140)
 								{
-									var complaint_final="username="+Global_username+"&complaint="+jQuery('#complaint').val();
-									jQuery.ajax({
-									type: "POST",
-									url: 'http://www.squareonefeedback.com/Scripts/complaint.php',
-									data: complaint_final,
-									crossDomain: true,
-									cache: false,
-									success: function(dataS){
-									alert(dataS);}
-									});
+								
+									if(jQuery('#complaint').val().length>=140)
+									{
+										var complaint_final="username="+Global_username+"&complaint="+jQuery('#complaint').val();
+										jQuery.ajax({
+										type: "POST",
+										url: 'http://www.squareonefeedback.com/Scripts/complaint.php',
+										data: complaint_final,
+										crossDomain: true,
+										cache: false,
+										success: function(dataS){
+										alert(dataS);}
+										});
 									}
-									else
-									{alert("Complaint more than 140 characters.");}
-								}
+									else{alert("Complaint more than 140 characters.");}
+								}else{alert("Oh! No Complaints :)");}
 							});
 	}
 	function suggestion()
@@ -317,21 +316,19 @@
 								if((jQuery('#suggestion').val()==""))
 								{
 									if(jQuery('#suggestion').val().length>=140)
-								{
-								alert("Please Enter a suggestion");}
-								else{
-								var suggestion_final="username="+Global_username+"&suggestion="+jQuery('#suggestion').val();
-								jQuery.ajax({
-								type: "POST",
-								url: 'http://www.squareonefeedback.com/Scripts/suggestion.php',
-								data: suggestion_final,
-								crossDomain: true,
-								cache: false,
-								success: function(dataS){
-								alert(dataS);}
-								});
-								}else{alert(""Complaint more than 140 characters."");}
-								}
+									{
+										var suggestion_final="username="+Global_username+"&suggestion="+jQuery('#suggestion').val();
+										jQuery.ajax({
+										type: "POST",
+										url: 'http://www.squareonefeedback.com/Scripts/suggestion.php',
+										data: suggestion_final,
+										crossDomain: true,
+										cache: false,
+										success: function(dataS){
+										alert(dataS);}
+										});
+									}else{alert("Complaint more than 140 characters.");}
+								}else{alert("Please Enter a suggestion");}
 							});
 	}
 	function retrive_menu_info()
@@ -389,7 +386,6 @@
 	}
 	function load_comm(item_id)
 	{
-		jQuery("div#FEEDBACKMAIN").html("<center><h1>Loading</h1> <img src='img/loading.gif'></center>");
 		var dataITEM="item_id="+item_id;
 		jQuery.post("http://www.squareonefeedback.com/Scripts/take_feedback.php",dataITEM,function(feedback_R){
 			jQuery.each(feedback_R,function(i,temp_feedback_R){
